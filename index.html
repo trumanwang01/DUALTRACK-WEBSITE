@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DUAL TRACK ENTERTAINMENT — 雙軌娛樂製作</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #ffffff;
+      --surface: #f5f5f5;
+      --ink:     #0d0d0d;
+      --muted:   #737373;
+      --light:   #a3a3a3;
+      --blue:    #1d4ed8;
+      --border:  #e5e5e5;
+      --white:   #ffffff;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Noto Serif TC', serif;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ── Utilities ──────────────────────── */
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+
+    .label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+
+    /* ── Scroll Reveal ──────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.72s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.72s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal.is-visible        { opacity: 1; transform: translateY(0); }
+    .reveal.delay-1           { transition-delay: 0.08s; }
+    .reveal.delay-2           { transition-delay: 0.16s; }
+    .reveal.delay-3           { transition-delay: 0.24s; }
+    .reveal.delay-4           { transition-delay: 0.32s; }
+
+    /* ── Navigation ─────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.nav--scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.05); }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+
+    .nav-logo {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: 0.95rem;
+      letter-spacing: 0.22em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-logo em { color: var(--blue); font-style: normal; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-cta {
+      color: var(--white) !important;
+      background: var(--ink);
+      padding: 9px 22px !important;
+      transition: background 0.25s !important;
+    }
+    .nav-cta:hover { background: var(--blue) !important; color: var(--white) !important; }
+
+    /* ── Hero ───────────────────────────── */
+    #hero {
+      padding: 128px 0 112px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    /* Slogan */
+    .hero-slogan {
+      margin-bottom: 48px;
+      padding: 18px 0 18px 20px;
+      border-left: 2px solid var(--blue);
+    }
+    .slogan-pre {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .slogan-main {
+      display: block;
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: 1.55rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+    .slogan-accent { color: var(--blue); }
+
+    .hero-h1 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 5.2vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+    .hero-h1 .dual   { color: var(--blue); }
+    .hero-h1 .accent { color: var(--ink); }
+
+    .hero-sub {
+      font-size: 0.94rem;
+      color: var(--muted);
+      line-height: 2.1;
+      margin-bottom: 64px;
+      max-width: 320px;
+    }
+
+    .stat-list { display: flex; flex-direction: column; }
+
+    .stat-item {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      align-items: baseline;
+      gap: 20px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-bottom: 1px solid var(--border); }
+
+    .stat-num {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    .stat-desc {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .hero-right { padding-top: 8px; }
+
+    .manifesto-label { margin-bottom: 40px; }
+
+    .manifesto-list { display: flex; flex-direction: column; }
+
+    .manifesto-item {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .manifesto-item:last-child { border-bottom: 1px solid var(--border); }
+
+    /* Colour-sweep backdrop */
+    .manifesto-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--m-clr);
+      transform: translateX(-101%);
+      transition: transform 0.46s cubic-bezier(0.76, 0, 0.24, 1);
+      z-index: 0;
+    }
+    .manifesto-item:hover::before { transform: translateX(0); }
+
+    /* Per-item accent colours */
+    .manifesto-item:nth-child(1) { --m-clr: #f97316; } /* orange  */
+    .manifesto-item:nth-child(2) { --m-clr: #1d4ed8; } /* blue    */
+    .manifesto-item:nth-child(3) { --m-clr: #7c3aed; } /* violet  */
+
+    .m-pair {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .m-en {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      letter-spacing: -0.01em;
+      transition: color 0.28s;
+    }
+    .manifesto-item:hover .m-en { color: #ffffff; }
+
+    .m-sep {
+      font-family: 'DM Mono', monospace;
+      color: var(--border);
+      margin: 0 10px;
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 1;
+      transition: color 0.28s;
+    }
+    .manifesto-item:hover .m-sep { color: rgba(255,255,255,0.22); }
+
+    .m-zh {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--light);
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+      transition: color 0.28s;
+    }
+    .manifesto-item:hover .m-zh { color: rgba(255, 255, 255, 0.72); }
+
+    /* ── Marquee ────────────────────────── */
+    #marquee-bar {
+      background: var(--ink);
+      padding: 13px 0;
+      overflow: hidden;
+    }
+    .mq-track {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 30s linear infinite;
+    }
+    .mq-track:hover { animation-play-state: paused; }
+    .mq-item {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      padding: 0 44px;
+      flex-shrink: 0;
+    }
+    .mq-dot {
+      color: var(--blue);
+      font-size: 0.46rem;
+      flex-shrink: 0;
+      align-self: center;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── Section shared ─────────────────── */
+    .section {
+      padding: 128px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-tag {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+    .section-tag .s-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      color: var(--light);
+    }
+    .section-tag .s-line {
+      width: 40px;
+      height: 1px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .section-tag .s-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+
+    .section-h2 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+    }
+
+    /* ── About ──────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+    }
+
+    .about-h2 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      line-height: 1.14;
+      letter-spacing: -0.01em;
+      margin-bottom: 36px;
+    }
+
+    .body-copy { font-size: 0.92rem; line-height: 2.05; color: var(--muted); }
+    .body-copy p + p { margin-top: 20px; }
+
+    .about-right { padding-top: 56px; }
+
+    .kd-row { display: flex; flex-direction: column; margin-bottom: 56px; }
+
+    .kd-item {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+    }
+    .kd-item:last-child { border-bottom: 1px solid var(--border); }
+
+    .kd-num {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: 2.8rem;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .kd-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-top: 6px;
+    }
+
+    blockquote { border-left: 2px solid var(--blue); padding-left: 24px; }
+    blockquote p { font-size: 0.92rem; line-height: 2; color: var(--muted); font-style: italic; }
+
+    /* ── Three C's ──────────────────────── */
+    .c-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+
+    .c-card {
+      padding: 52px 40px;
+      border: 1px solid var(--border);
+      border-right: none;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .c-card:last-child { border-right: 1px solid var(--border); }
+    .c-card:hover { background: var(--surface); }
+    .c-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--blue);
+      transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .c-card:hover::after { width: 100%; }
+
+    .c-idx {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      color: var(--light);
+      margin-bottom: 32px;
+    }
+    .c-en {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: 1.75rem;
+      letter-spacing: -0.01em;
+    }
+    .c-zh {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--light);
+      margin-top: 5px;
+      margin-bottom: 28px;
+    }
+    .c-rule { border: none; border-top: 1px solid var(--border); margin-bottom: 22px; }
+    .c-body { font-size: 0.84rem; line-height: 1.92; color: var(--muted); }
+
+    /* ── Businesses ─────────────────────── */
+    .biz-list { display: flex; flex-direction: column; }
+
+    .biz-row {
+      display: grid;
+      grid-template-columns: 72px 1fr 1.4fr auto 28px;
+      align-items: center;
+      gap: 40px;
+      padding: 26px 0;
+      border-top: 1px solid var(--border);
+      cursor: default;
+      transition: background 0.22s;
+    }
+    .biz-row:last-child { border-bottom: 1px solid var(--border); }
+    .biz-row:hover { background: var(--surface); }
+    .biz-row:hover .biz-arrow { color: var(--blue); transform: translateX(5px); }
+
+    .biz-idx {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      color: var(--light);
+    }
+    .biz-name { font-family: 'Noto Sans TC', sans-serif; font-weight: 700; font-size: 1.05rem; }
+    .biz-sub  { font-size: 0.82rem; color: var(--muted); }
+
+    .biz-tags { display: flex; gap: 8px; }
+    .biz-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.59rem;
+      letter-spacing: 0.08em;
+      color: var(--light);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+    }
+
+    .biz-arrow {
+      font-size: 1rem;
+      color: var(--light);
+      transition: color 0.22s, transform 0.22s;
+    }
+
+    /* ── Virtual IP ─────────────────────── */
+    #virtual-ip { display: grid; grid-template-columns: 1fr 1fr; }
+
+    .vip-l {
+      background: var(--ink);
+      color: var(--white);
+      padding: 96px 72px;
+    }
+    .vip-l .label { color: rgba(255, 255, 255, 0.25); margin-bottom: 40px; }
+
+    .vip-h2 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.9rem, 3vw, 2.9rem);
+      line-height: 1.18;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+    }
+    .vip-l p { font-size: 0.9rem; line-height: 2.05; color: rgba(255, 255, 255, 0.5); }
+    .vip-l p + p { margin-top: 20px; }
+
+    .vip-r {
+      background: var(--bg);
+      padding: 96px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .vip-stat { padding: 28px 0; border-top: 1px solid var(--border); }
+    .vip-stat:last-child { border-bottom: 1px solid var(--border); }
+
+    .vip-num {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: 3.2rem;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .vip-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.65;
+    }
+
+    /* ── Flywheel ───────────────────────── */
+    .fw-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: start;
+    }
+
+    .fw-desc { font-size: 0.92rem; line-height: 2.05; color: var(--muted); margin-top: 24px; }
+
+    .fw-steps { display: flex; flex-direction: column; }
+
+    .fw-step {
+      display: flex;
+      gap: 28px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+    .fw-step:last-child { border-bottom: 1px solid var(--border); }
+
+    .fw-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      color: var(--blue);
+      padding-top: 4px;
+      min-width: 24px;
+    }
+
+    .fw-step-body h4 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .fw-step-body p { font-size: 0.84rem; line-height: 1.9; color: var(--muted); }
+
+    /* ── Four Pillars ───────────────────── */
+    .p-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+
+    .p-card {
+      padding: 48px 34px;
+      border: 1px solid var(--border);
+      border-right: none;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .p-card:last-child { border-right: 1px solid var(--border); }
+    .p-card:hover { background: var(--surface); }
+    .p-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .p-card:hover::before { transform: scaleX(1); }
+
+    .p-idx {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      color: var(--light);
+      margin-bottom: 28px;
+    }
+    .p-en { font-family: 'Noto Sans TC', sans-serif; font-weight: 900; font-size: 1.25rem; }
+    .p-zh {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.08em;
+      color: var(--light);
+      margin-top: 4px;
+      margin-bottom: 24px;
+    }
+    .p-rule { border: none; border-top: 1px solid var(--border); margin-bottom: 20px; }
+    .p-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .p-li {
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .p-li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--light);
+    }
+
+    /* ── Vision ─────────────────────────── */
+    .vision-hed { margin-bottom: 80px; }
+
+    .vision-h2 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 4.8vw, 4.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-top: 20px;
+      max-width: 620px;
+    }
+
+    .v-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+    .v-card {
+      padding: 40px 32px;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .v-card:hover {
+      border-color: var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    .v-card-idx {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 24px;
+    }
+    .v-card h3 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .v-card p { font-size: 0.84rem; line-height: 1.9; color: var(--muted); }
+
+    /* ── Join Us ────────────────────────── */
+    #join {
+      background: var(--ink);
+      color: var(--white);
+      padding: 128px 0;
+    }
+
+    .join-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 64px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .join-h2 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .join-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .j-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .j-card {
+      padding: 48px 40px;
+      background: var(--ink);
+      transition: background 0.28s;
+      display: flex;
+      flex-direction: column;
+    }
+    .j-card:hover { background: #181818; }
+
+    .j-idx {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.22);
+      margin-bottom: 20px;
+    }
+    .j-title {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .j-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.25);
+      margin-bottom: 24px;
+    }
+    .j-rule { border: none; border-top: 1px solid rgba(255, 255, 255, 0.08); margin-bottom: 24px; }
+    .j-card p {
+      font-size: 0.85rem;
+      line-height: 1.9;
+      color: rgba(255, 255, 255, 0.48);
+      margin-bottom: 28px;
+      flex-grow: 1;
+    }
+    .j-link {
+      margin-top: auto;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.25s;
+    }
+    .j-link::after { content: '→'; }
+    .j-link:hover { gap: 14px; }
+
+    /* ── Footer ─────────────────────────── */
+    footer { border-top: 1px solid var(--border); padding: 40px 0; }
+
+    .ft-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+    .ft-logo {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      color: var(--ink);
+    }
+    .ft-logo em { color: var(--blue); font-style: normal; }
+    .ft-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      color: var(--light);
+    }
+    .ft-links { display: flex; gap: 28px; list-style: none; }
+    .ft-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .ft-links a:hover { color: var(--ink); }
+
+    /* ━━ RWD ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+    /* Tablet (≤ 1023px) */
+    @media (max-width: 1023px) {
+
+      .wrap      { padding: 0 32px; }
+      .nav-inner { padding: 0 32px; }
+
+      .section  { padding: 88px 0; }
+      #hero     { padding: 80px 0 72px; }
+      #join     { padding: 88px 0; }
+
+      .hero-grid   { grid-template-columns: 1fr; gap: 64px; }
+      .about-grid  { grid-template-columns: 1fr; gap: 56px; }
+      .about-right { padding-top: 0; }
+
+      .c-grid            { grid-template-columns: 1fr; }
+      .c-card            { border-right: 1px solid var(--border); border-bottom: none; }
+      .c-card:last-child { border-bottom: 1px solid var(--border); }
+
+      .biz-row  { grid-template-columns: 56px 1fr auto 24px; gap: 24px; }
+      .biz-tags { display: none; }
+
+      #virtual-ip  { grid-template-columns: 1fr; }
+      .vip-l, .vip-r { padding: 72px 48px; }
+
+      .fw-grid { grid-template-columns: 1fr; gap: 56px; }
+
+      .p-grid                      { grid-template-columns: repeat(2, 1fr); }
+      .p-card                      { border-right: none; border-bottom: none; }
+      .p-card:nth-child(2n)        { border-right: 1px solid var(--border); }
+      .p-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+
+      .v-cards { grid-template-columns: 1fr; }
+
+      .j-grid      { grid-template-columns: 1fr; }
+      .join-top    { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+      .ft-inner { flex-direction: column; align-items: flex-start; gap: 16px; padding: 0 32px; }
+    }
+
+    /* Mobile (≤ 767px) */
+    @media (max-width: 767px) {
+
+      .wrap      { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .nav-links li:not(:last-child) { display: none; }
+
+      .section  { padding: 72px 0; }
+      #hero     { padding: 64px 0; }
+      #join     { padding: 72px 0; }
+
+      /* 更大的 reveal 移動幅度，提升進場張力 */
+      .reveal { transform: translateY(40px); }
+
+      /* 手機首屏標題放大 */
+      .hero-h1    { font-size: clamp(2.8rem, 9vw, 3.6rem); }
+      .slogan-main { font-size: 1.65rem; }
+
+      /* 統計數字放大 */
+      .stat-num { font-size: 2.1rem; }
+
+      /* 區塊標題放大 */
+      .section-h2 { font-size: clamp(1.9rem, 7vw, 2.4rem); }
+      .about-h2   { font-size: clamp(1.9rem, 7vw, 2.4rem); }
+      .vision-h2  { font-size: clamp(2.6rem, 8vw, 3.4rem); }
+
+      .section-tag { margin-bottom: 40px; }
+
+      .biz-row { grid-template-columns: 40px 1fr 24px; gap: 14px; padding: 22px 8px; }
+      .biz-sub { display: none; }
+
+      .vip-l, .vip-r { padding: 56px 20px; }
+      .vip-num { font-size: 2.8rem; }
+
+      .p-grid                      { grid-template-columns: 1fr; }
+      .p-card                      { border-right: 1px solid var(--border); }
+      .p-card:nth-last-child(-n+2) { border-bottom: none; }
+      .p-card:last-child           { border-bottom: 1px solid var(--border); }
+
+      .ft-inner { padding: 0 20px; }
+      .ft-links { flex-wrap: wrap; gap: 16px; }
+    }
+
+    /* ── Touch devices: replace hover with persistent & tap accents ── */
+    @media (hover: none) and (pointer: coarse) {
+
+      /* Manifesto: 常駐左側色條，讓三種顏色在手機上直接可見 */
+      .manifesto-item {
+        padding-left: 20px;
+        border-left: 3px solid var(--m-clr);
+      }
+
+      /* tap 短暫觸發色塊橫掃（配合 JS .is-tapped） */
+      .manifesto-item.is-tapped::before { transform: translateX(0); transition-duration: 0.18s; }
+      .manifesto-item.is-tapped .m-en  { color: #ffffff; }
+      .manifesto-item.is-tapped .m-sep { color: rgba(255,255,255,0.22); }
+      .manifesto-item.is-tapped .m-zh  { color: rgba(255,255,255,0.72); }
+
+      /* 業務列 tap 高亮 */
+      .biz-row:active               { background: var(--surface); }
+      .biz-row:active .biz-arrow    { color: var(--blue); transform: translateX(5px); }
+
+      /* 卡片藍色線條常駐顯示一小段（partial accent） */
+      .c-card::after  { width: 44px; }
+      .p-card::before { transform: scaleX(0.2); transform-origin: left; }
+
+      /* Vision 卡片永遠顯示 offset shadow */
+      .v-card { box-shadow: 3px 3px 0 var(--border); }
+
+      /* Join 卡片 tap 回饋 */
+      .j-card:active { background: #181818; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">DUAL TRACK<em>.</em></a>
+    <ul class="nav-links">
+      <li><a href="#businesses">業務</a></li>
+      <li><a href="#spirit">精神</a></li>
+      <li><a href="#virtual-ip">虛擬 IP</a></li>
+      <li><a href="#vision">願景</a></li>
+      <li><a href="#join" class="nav-cta">加入我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <div class="hero-left">
+        <div class="hero-slogan reveal">
+          <span class="slogan-pre">We don't discover talent.</span>
+          <span class="slogan-main">We <span class="slogan-accent">build</span> it.</span>
+        </div>
+        <h1 class="hero-h1 reveal">
+          <span class="dual">DUAL</span> TRACK<br>
+          ENTER<span class="accent">TAIN</span>MENT
+        </h1>
+        <p class="hero-sub reveal delay-1">
+          雙軌娛樂製作<br>
+          在荒誕與真誠之間，<br>
+          創造屬於這個世代的符號。
+        </p>
+        <div class="stat-list">
+          <div class="stat-item reveal delay-1">
+            <span class="stat-num" data-count="95" data-suffix="%">0%</span>
+            <span class="stat-desc">消費者由情緒驅動購買決策</span>
+          </div>
+          <div class="stat-item reveal delay-2">
+            <span class="stat-num">3.5×</span>
+            <span class="stat-desc">虛擬 IP 市場年均複合成長率</span>
+          </div>
+          <div class="stat-item reveal delay-3">
+            <span class="stat-num" data-count="60" data-suffix="%">0%</span>
+            <span class="stat-desc">Z 世代偏好參與粉絲共創內容</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right reveal delay-2">
+        <p class="label manifesto-label">Brand Manifesto</p>
+        <div class="manifesto-list">
+          <div class="manifesto-item">
+            <div class="m-pair">
+              <span class="m-en">Absurd</span><span class="m-sep">/</span><span class="m-en">Sincere</span>
+            </div>
+            <div class="m-zh">在荒誕中尋找真誠的重量</div>
+          </div>
+          <div class="manifesto-item">
+            <div class="m-pair">
+              <span class="m-en">Virtual</span><span class="m-sep">/</span><span class="m-en">Reality</span>
+            </div>
+            <div class="m-zh">虛擬與現實的邊界即是創作場域</div>
+          </div>
+          <div class="manifesto-item">
+            <div class="m-pair">
+              <span class="m-en">Experience</span><span class="m-sep">/</span><span class="m-en">Fantasy</span>
+            </div>
+            <div class="m-zh">體驗即幻想，幻想即現實</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div id="marquee-bar">
+  <div class="mq-track">
+    <span class="mq-item">原創 IP 孵化</span><span class="mq-dot">✦</span>
+    <span class="mq-item">虛擬偶像經紀</span><span class="mq-dot">✦</span>
+    <span class="mq-item">品牌娛樂行銷</span><span class="mq-dot">✦</span>
+    <span class="mq-item">創作者生態培育</span><span class="mq-dot">✦</span>
+    <span class="mq-item">娛樂內容教育</span><span class="mq-dot">✦</span>
+    <span class="mq-item">原創 IP 孵化</span><span class="mq-dot">✦</span>
+    <span class="mq-item">虛擬偶像經紀</span><span class="mq-dot">✦</span>
+    <span class="mq-item">品牌娛樂行銷</span><span class="mq-dot">✦</span>
+    <span class="mq-item">創作者生態培育</span><span class="mq-dot">✦</span>
+    <span class="mq-item">娛樂內容教育</span><span class="mq-dot">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <div class="about-left">
+        <div class="section-tag reveal">
+          <span class="s-num">01</span>
+          <span class="s-line"></span>
+          <span class="s-name">About</span>
+        </div>
+        <h2 class="about-h2 reveal">我們是誰，<br>以及我們為何存在</h2>
+        <div class="body-copy reveal delay-1">
+          <p>DUAL TRACK ENTERTAINMENT 雙軌娛樂製作，以「雙軌」為核心方法論——同時運行虛擬與現實、嚴肅與荒誕、商業與藝術，在兩條軌道的交會處創造獨特的文化能量。</p>
+          <p>我們相信，娛樂不只是消遣，而是這個時代最有效的議題載體。透過原創 IP、虛擬偶像、品牌內容與創作者生態，DUAL TRACK 將情感共鳴轉化為可持續的商業模式。</p>
+          <p>每一個作品都是一次實驗：用荒誕的形式包裹真實的情感，用輕盈的媒介承載沉重的議題。我們不迴避矛盾，而是讓矛盾成為創作的燃料。</p>
+          <p>在這個注意力碎片化的時代，DUAL TRACK 選擇走向深度。我們不追求最大公約數的流量，而是尋找願意一起走進這個世界的共鳴者。</p>
+        </div>
+      </div>
+
+      <div class="about-right reveal delay-2">
+        <div class="kd-row">
+          <div class="kd-item">
+            <div class="kd-num">2026</div>
+            <div class="kd-label">創立年份 — Founded</div>
+          </div>
+          <div class="kd-item">
+            <div class="kd-num">5＋</div>
+            <div class="kd-label">核心業務領域 — Core Verticals</div>
+          </div>
+          <div class="kd-item">
+            <div class="kd-num">∞</div>
+            <div class="kd-label">創作的可能性 — Possibilities</div>
+          </div>
+        </div>
+        <blockquote>
+          <p>「雙軌不是折衷，而是一種同時承載兩種真實的能力。當虛擬與現實、嚴肅與玩笑同時存在，才能映照出這個時代完整的樣貌。」</p>
+        </blockquote>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- THREE C's -->
+<section id="spirit" class="section">
+  <div class="wrap">
+    <div class="section-tag reveal">
+      <span class="s-num">02</span>
+      <span class="s-line"></span>
+      <span class="s-name">Core Spirit</span>
+    </div>
+    <h2 class="section-h2 reveal" style="margin-bottom:56px;">核心精神</h2>
+    <div class="c-grid">
+
+      <div class="c-card reveal delay-1">
+        <div class="c-idx">C.01</div>
+        <div class="c-en">Creation</div>
+        <div class="c-zh">創作</div>
+        <hr class="c-rule">
+        <p class="c-body">創作是我們的根本語言。不是為了填補內容缺口，而是因為有話要說、有世界要建。每一個 IP 都是一個有生命的宇宙，等待被探索、被延伸、被共同書寫。</p>
+      </div>
+
+      <div class="c-card reveal delay-2">
+        <div class="c-idx">C.02</div>
+        <div class="c-en">Curiosity</div>
+        <div class="c-zh">好奇</div>
+        <hr class="c-rule">
+        <p class="c-body">好奇心是我們拒絕固化的理由。對人性的好奇、對形式的好奇、對邊界的好奇——驅動我們不斷問：如果不按牌理出牌，會發生什麼？這種不安分，是我們最珍貴的資產。</p>
+      </div>
+
+      <div class="c-card reveal delay-3">
+        <div class="c-idx">C.03</div>
+        <div class="c-en">Creativity</div>
+        <div class="c-zh">創意</div>
+        <hr class="c-rule">
+        <p class="c-body">創意不是靈光一現，而是一種有紀律的思考方式。我們在限制中尋找自由，在熟悉的形式裡埋下陌生感，讓每一次接觸都留下一點點改變觀點的可能。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESSES -->
+<section id="businesses" class="section">
+  <div class="wrap">
+    <div class="section-tag reveal">
+      <span class="s-num">03</span>
+      <span class="s-line"></span>
+      <span class="s-name">Business Verticals</span>
+    </div>
+    <h2 class="section-h2 reveal" style="margin-bottom:56px;">五大業務</h2>
+    <div class="biz-list">
+
+      <div class="biz-row reveal">
+        <span class="biz-idx">B.01</span>
+        <span class="biz-name">原創 IP 孵化</span>
+        <span class="biz-sub">Original IP Incubation — 從零開始建構有靈魂的 IP 宇宙</span>
+        <div class="biz-tags"><span class="biz-tag">IP Dev</span><span class="biz-tag">Story</span></div>
+        <span class="biz-arrow">→</span>
+      </div>
+
+      <div class="biz-row reveal delay-1">
+        <span class="biz-idx">B.02</span>
+        <span class="biz-name">虛擬偶像經紀</span>
+        <span class="biz-sub">Virtual Idol Management — 打造跨次元的虛擬文化符號</span>
+        <div class="biz-tags"><span class="biz-tag">VTuber</span><span class="biz-tag">VR/AR</span></div>
+        <span class="biz-arrow">→</span>
+      </div>
+
+      <div class="biz-row reveal delay-2">
+        <span class="biz-idx">B.03</span>
+        <span class="biz-name">品牌娛樂行銷</span>
+        <span class="biz-sub">Brand Entertainment — 讓品牌說一個值得被記住的故事</span>
+        <div class="biz-tags"><span class="biz-tag">Branded</span><span class="biz-tag">Campaign</span></div>
+        <span class="biz-arrow">→</span>
+      </div>
+
+      <div class="biz-row reveal delay-3">
+        <span class="biz-idx">B.04</span>
+        <span class="biz-name">創作者生態培育</span>
+        <span class="biz-sub">Creator Ecosystem — 建立讓創作者可以持續創作的土壤</span>
+        <div class="biz-tags"><span class="biz-tag">Talent</span><span class="biz-tag">Community</span></div>
+        <span class="biz-arrow">→</span>
+      </div>
+
+      <div class="biz-row reveal delay-4">
+        <span class="biz-idx">B.05</span>
+        <span class="biz-name">娛樂內容教育</span>
+        <span class="biz-sub">Entertainment Education — 用娛樂的語言傳遞有意義的知識</span>
+        <div class="biz-tags"><span class="biz-tag">Edu</span><span class="biz-tag">Workshop</span></div>
+        <span class="biz-arrow">→</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VIRTUAL IP -->
+<section id="virtual-ip">
+  <div class="vip-l reveal">
+    <p class="label" style="margin-bottom:40px;">04 — Virtual IP</p>
+    <h2 class="vip-h2">虛擬 IP，<br>真實的情感連結</h2>
+    <p>虛擬偶像不是替代品，而是一種新的存在形式。在這個邊界模糊的時代，虛擬角色能夠承載現實人物難以觸碰的情感維度——不受形體限制，不受年齡侷限，不受物理距離約束。</p>
+    <p>DUAL TRACK 的虛擬 IP 戰略不只是創造角色，而是建構一個可以讓粉絲「住進去」的世界觀。每一個細節都是邀請，每一次互動都是共同書寫的故事。</p>
+  </div>
+  <div class="vip-r reveal delay-2">
+    <div class="vip-stat">
+      <div class="vip-num">3.5×</div>
+      <div class="vip-label">虛擬 IP 市場預估年均複合成長率（2024–2028）</div>
+    </div>
+    <div class="vip-stat">
+      <div class="vip-num" data-count="82" data-suffix="%">0%</div>
+      <div class="vip-label">虛擬偶像粉絲表示情感連結強度不亞於真人偶像</div>
+    </div>
+    <div class="vip-stat">
+      <div class="vip-num">$240B</div>
+      <div class="vip-label">全球虛擬角色周邊市場規模預估（2027 年）</div>
+    </div>
+  </div>
+</section>
+
+<!-- FLYWHEEL -->
+<section id="flywheel" class="section">
+  <div class="wrap">
+    <div class="section-tag reveal">
+      <span class="s-num">05</span>
+      <span class="s-line"></span>
+      <span class="s-name">Business Model</span>
+    </div>
+    <div class="fw-grid">
+
+      <div class="fw-left reveal">
+        <h2 class="section-h2">飛輪<br>商業模式</h2>
+        <p class="fw-desc">DUAL TRACK 的商業邏輯不是線性的，而是一個自我強化的飛輪：每一個業務節點都同時是下一個節點的燃料。議題帶動社群，社群孕育 IP，IP 創造變現，變現反哺生態——持續轉動，越轉越快。</p>
+      </div>
+
+      <div class="fw-steps">
+        <div class="fw-step reveal delay-1">
+          <span class="fw-num">01</span>
+          <div class="fw-step-body">
+            <h4>議題共鳴</h4>
+            <p>找到時代的情緒裂縫，以荒誕或真誠的方式切入，製造無法忽視的文化瞬間。</p>
+          </div>
+        </div>
+        <div class="fw-step reveal delay-2">
+          <span class="fw-num">02</span>
+          <div class="fw-step-body">
+            <h4>社群動能</h4>
+            <p>將單向的內容消費轉化為雙向的共創參與，讓粉絲成為故事不可或缺的一部分。</p>
+          </div>
+        </div>
+        <div class="fw-step reveal delay-3">
+          <span class="fw-num">03</span>
+          <div class="fw-step-body">
+            <h4>IP 變現</h4>
+            <p>透過授權、周邊、活動、品牌合作等多元管道，將情感連結轉化為可持續的商業價值。</p>
+          </div>
+        </div>
+        <div class="fw-step reveal delay-4">
+          <span class="fw-num">04</span>
+          <div class="fw-step-body">
+            <h4>生態回饋</h4>
+            <p>將資源重新投入創作者培育與新 IP 孵化，形成完整的正向循環生態系統。</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOUR PILLARS -->
+<section id="pillars" class="section">
+  <div class="wrap">
+    <div class="section-tag reveal">
+      <span class="s-num">06</span>
+      <span class="s-line"></span>
+      <span class="s-name">Four Pillars</span>
+    </div>
+    <h2 class="section-h2 reveal" style="margin-bottom:56px;">四大支柱</h2>
+    <div class="p-grid">
+
+      <div class="p-card reveal delay-1">
+        <div class="p-idx">P.01</div>
+        <div class="p-en">Application</div>
+        <div class="p-zh">應用</div>
+        <hr class="p-rule">
+        <ul class="p-items">
+          <li class="p-li">跨平台內容整合</li>
+          <li class="p-li">沉浸式體驗設計</li>
+          <li class="p-li">互動敘事應用</li>
+          <li class="p-li">數位與實體融合</li>
+        </ul>
+      </div>
+
+      <div class="p-card reveal delay-2">
+        <div class="p-idx">P.02</div>
+        <div class="p-en">Medium</div>
+        <div class="p-zh">媒介</div>
+        <hr class="p-rule">
+        <ul class="p-items">
+          <li class="p-li">影像與動態內容</li>
+          <li class="p-li">音頻與播客生態</li>
+          <li class="p-li">社群媒體策略</li>
+          <li class="p-li">虛擬直播技術</li>
+        </ul>
+      </div>
+
+      <div class="p-card reveal delay-3">
+        <div class="p-idx">P.03</div>
+        <div class="p-en">Business</div>
+        <div class="p-zh">業務</div>
+        <hr class="p-rule">
+        <ul class="p-items">
+          <li class="p-li">IP 授權與管理</li>
+          <li class="p-li">品牌合作企劃</li>
+          <li class="p-li">活動與展演製作</li>
+          <li class="p-li">周邊商品開發</li>
+        </ul>
+      </div>
+
+      <div class="p-card reveal delay-4">
+        <div class="p-idx">P.04</div>
+        <div class="p-en">Education</div>
+        <div class="p-zh">教育</div>
+        <hr class="p-rule">
+        <ul class="p-items">
+          <li class="p-li">創作者培訓計畫</li>
+          <li class="p-li">娛樂產業工作坊</li>
+          <li class="p-li">IP 開發課程</li>
+          <li class="p-li">產學合作計畫</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section id="vision" class="section">
+  <div class="wrap">
+    <div class="vision-hed">
+      <div class="section-tag reveal">
+        <span class="s-num">07</span>
+        <span class="s-line"></span>
+        <span class="s-name">Vision</span>
+      </div>
+      <h2 class="vision-h2 reveal">打造下一個<br>世代的文化符號</h2>
+    </div>
+    <div class="v-cards">
+
+      <div class="v-card reveal delay-1">
+        <div class="v-card-idx">Vision 01</div>
+        <h3>成為台灣虛擬文化的輸出引擎</h3>
+        <p>在華語文化圈中建立獨特的美學語言，讓台灣的創作視角成為具有國際辨識度的文化符號，從島嶼出發，走向世界。</p>
+      </div>
+
+      <div class="v-card reveal delay-2">
+        <div class="v-card-idx">Vision 02</div>
+        <h3>重新定義娛樂與意義的關係</h3>
+        <p>證明娛樂可以同時是輕盈的與深刻的、商業的與藝術的。拒絕在「有意思」與「有意義」之間二選一，兩者本來就是一體兩面。</p>
+      </div>
+
+      <div class="v-card reveal delay-3">
+        <div class="v-card-idx">Vision 03</div>
+        <h3>建立創作者可以長期耕耘的沃土</h3>
+        <p>打造一個讓創作者不必為流量焦慮、不必為生計妥協的生態系統。相信持續創作的力量，比單一爆款更能改變文化的走向。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- JOIN US -->
+<section id="join">
+  <div class="wrap">
+    <div class="join-top">
+      <h2 class="join-h2 reveal">加入我們</h2>
+      <span class="join-sub reveal delay-1">08 — Join Us</span>
+    </div>
+    <div class="j-grid">
+
+      <div class="j-card reveal delay-1">
+        <div class="j-idx">J.01</div>
+        <h3 class="j-title">創投者</h3>
+        <p class="j-sub">Investors &amp; Partners</p>
+        <hr class="j-rule">
+        <p>如果你相信情感驅動的商業模式，相信虛擬與現實融合的未來，我們歡迎一起探討合作的可能。DUAL TRACK 正在尋找與我們共享長期視野的資本夥伴。</p>
+        <a href="#" class="j-link">了解投資機會</a>
+      </div>
+
+      <div class="j-card reveal delay-2">
+        <div class="j-idx">J.02</div>
+        <h3 class="j-title">品牌夥伴</h3>
+        <p class="j-sub">Brand Collaborations</p>
+        <hr class="j-rule">
+        <p>我們不做普通的廣告，我們做有記憶點的文化瞬間。如果你的品牌想要真正進入受眾的情感世界，讓我們一起創造一個值得被記住的故事。</p>
+        <a href="#" class="j-link">探索合作形式</a>
+      </div>
+
+      <div class="j-card reveal delay-3">
+        <div class="j-idx">J.03</div>
+        <h3 class="j-title">創作者</h3>
+        <p class="j-sub">Creators &amp; Talents</p>
+        <hr class="j-rule">
+        <p>如果你有一個世界想要建造，有一個故事想要說，有一個角色想要讓它活過來——DUAL TRACK 是那個願意陪你一起走進去的地方。不論你的形式是什麼。</p>
+        <a href="#" class="j-link">申請創作計畫</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">DUAL TRACK<em>.</em> Entertainment</div>
+    <p class="ft-copy">© 2026 DUAL TRACK ENTERTAINMENT 雙軌娛樂製作. All rights reserved.</p>
+    <ul class="ft-links">
+      <li><a href="#">隱私政策</a></li>
+      <li><a href="#">服務條款</a></li>
+      <li><a href="#">聯絡我們</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  /* ── Scroll reveal ──────────────────────────────────── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  /* ── Number counter ─────────────────────────────────── */
+  function runCounter(el) {
+    const target  = parseFloat(el.dataset.count);
+    const suffix  = el.dataset.suffix || '';
+    const isFloat = el.dataset.count.includes('.');
+    const dur     = 1400;
+    const t0      = performance.now();
+    const tick    = (now) => {
+      const p = Math.min((now - t0) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = (isFloat
+        ? (target * ease).toFixed(1)
+        : Math.round(target * ease)) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  const countEls = document.querySelectorAll('[data-count]');
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        runCounter(entry.target);
+        countObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.6 });
+  countEls.forEach(el => countObserver.observe(el));
+
+  /* ── Nav shadow on scroll ───────────────────────────── */
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('nav--scrolled', window.scrollY > 4);
+  }, { passive: true });
+
+  /* ── Manifesto tap animation (touch devices) ─────────── */
+  document.querySelectorAll('.manifesto-item').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.add('is-tapped');
+      setTimeout(() => item.classList.remove('is-tapped'), 660);
+    });
+  });
+
+  /* ── Manifesto scramble (triggers once on scroll-in) ── */
+  (function () {
+    const POOL = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    function scramble(el) {
+      const final = el.textContent.trim();
+      let f = 0;
+      const total = final.length * 5;
+      const id = setInterval(() => {
+        el.textContent = final.split('').map((ch, i) => {
+          if (f >= i * 5 + 3) return ch;
+          return POOL[Math.floor(Math.random() * 26)];
+        }).join('');
+        if (++f > total) { el.textContent = final; clearInterval(id); }
+      }, 36);
+    }
+
+    const list = document.querySelector('.manifesto-list');
+    if (!list) return;
+    const obs = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      obs.disconnect();
+      list.querySelectorAll('.m-en').forEach((el, i) =>
+        setTimeout(() => scramble(el), i * 120)
+      );
+    }, { threshold: 0.35 });
+    obs.observe(list);
+  })();
+</script>
+
+</body>
+</html>
