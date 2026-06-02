@@ -117,6 +117,121 @@
     }
     .nav-cta:hover { background: var(--blue) !important; color: var(--white) !important; }
 
+
+    .nav-os-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink) !important;
+      text-decoration: none;
+      border: 1px solid var(--ink);
+      padding: 6px 14px;
+      border-radius: 980px;
+      transition: all 0.2s !important;
+    }
+    .nav-os-link:hover {
+      background: var(--ink);
+      color: var(--white) !important;
+    }
+
+    /* ── DUAL OS Section ──────────────────── */
+    .dual-os-section {
+      background: #07070f;
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .dual-os-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(200,240,100,0.06) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .dual-os-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 56px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .dual-os-left {}
+    .dual-os-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #c8f064;
+      margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+    }
+    .dual-os-tag::before {
+      content: ''; width: 24px; height: 0.5px; background: #c8f064; opacity: 0.5;
+    }
+    .dual-os-headline {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900; letter-spacing: -0.02em;
+      line-height: 1.0; color: #f8f8fc; margin-bottom: 8px;
+    }
+    .dual-os-headline .os { color: #c8f064; }
+    .dual-os-tagline {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(248,248,252,0.35);
+      margin-bottom: 28px; display: block;
+    }
+    .dual-os-desc {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1rem; font-weight: 400;
+      color: rgba(248,248,252,0.62); line-height: 1.85;
+      margin-bottom: 40px;
+    }
+    .dual-os-desc em { color: rgba(248,248,252,0.88); font-style: normal; }
+    .dual-os-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #07070f; background: #c8f064;
+      text-decoration: none; padding: 14px 32px; border-radius: 980px;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .dual-os-cta:hover { opacity: 0.88; transform: scale(1.02); }
+    .dual-os-cta svg { width: 14px; height: 14px; stroke: #07070f; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .dual-os-right {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px; background: rgba(248,248,252,0.06);
+      border-radius: 16px; overflow: hidden;
+    }
+    .dos-card {
+      background: #0c0c18; padding: 28px 24px;
+      transition: background 0.3s;
+    }
+    .dos-card:hover { background: #111120; }
+    .dos-card-num {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      font-weight: 300; letter-spacing: 0.18em;
+      color: #c8f064; text-transform: uppercase; margin-bottom: 12px; display: block;
+    }
+    .dos-card-title {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      color: #f8f8fc; margin-bottom: 4px; letter-spacing: -0.01em;
+    }
+    .dos-card-zh {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      font-weight: 300; letter-spacing: 0.1em;
+      color: rgba(248,248,252,0.3); text-transform: uppercase; margin-bottom: 10px; display: block;
+    }
+    .dos-card-desc {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.8rem; color: rgba(248,248,252,0.52); line-height: 1.7;
+    }
+
+    @media(max-width: 900px) {
+      .dual-os-inner { grid-template-columns: 1fr; gap: 48px; }
+      .dual-os-right { grid-template-columns: 1fr; }
+    }
+    @media(max-width: 600px) {
+      .dual-os-inner { padding: 0 20px; }
+    }
     /* ── Hero ───────────────────────────── */
     #hero {
       padding: 128px 0 112px;
@@ -926,6 +1041,7 @@
       <li><a href="#spirit">精神</a></li>
       <li><a href="#virtual-ip">虛擬 IP</a></li>
       <li><a href="#vision">願景</a></li>
+      <li><a href="dual-os-v3.html" class="nav-os-link">DUAL <span style="color:var(--blue)">OS</span></a></li>
       <li><a href="#join" class="nav-cta">加入我們</a></li>
     </ul>
   </div>
@@ -1320,6 +1436,57 @@
         <p>打造一個讓創作者不必為流量焦慮、不必為生計妥協的生態系統。相信持續創作的力量，比單一爆款更能改變文化的走向。</p>
       </div>
 
+    </div>
+  </div>
+</section>
+
+
+<!-- DUAL OS -->
+<section class="dual-os-section">
+  <div class="dual-os-inner">
+    <div class="dual-os-left">
+      <div class="dual-os-tag">Product · AI Agent</div>
+      <h2 class="dual-os-headline">DUAL <span class="os">OS</span></h2>
+      <span class="dual-os-tagline">Entertainment Operating System</span>
+      <p class="dual-os-desc">
+        好的人才可能會離開，<em>但好的系統不會。</em><br><br>
+        DUAL OS 是專為娛樂經紀產業設計的 AI Agent 作業系統——從第一份劇本到最後一個 CUT，五個核心模組覆蓋從開案到結案的每一個環節。讓知識留在公司，讓系統越做越強。
+      </p>
+      <a href="dual-os-v3.html" class="dual-os-cta">
+        進入 DUAL OS
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="dual-os-right">
+      <div class="dos-card">
+        <span class="dos-card-num">01</span>
+        <div class="dos-card-title">Script</div>
+        <span class="dos-card-zh">劇本</span>
+        <p class="dos-card-desc">一張名片進來，60 秒完成品牌偵察、開發信、報價單</p>
+      </div>
+      <div class="dos-card">
+        <span class="dos-card-num">02</span>
+        <div class="dos-card-title">Action</div>
+        <span class="dos-card-zh">開拍</span>
+        <p class="dos-card-desc">業務劇本 + AI 簡報，從開口到成交每一步都有系統</p>
+      </div>
+      <div class="dos-card">
+        <span class="dos-card-num">03</span>
+        <div class="dos-card-title">Log</div>
+        <span class="dos-card-zh">場記</span>
+        <p class="dos-card-desc">執行時間軸、排程發信、自動跟進，什麼都不漏</p>
+      </div>
+      <div class="dos-card">
+        <span class="dos-card-num">04</span>
+        <div class="dos-card-title">Print</div>
+        <span class="dos-card-zh">眉角</span>
+        <p class="dos-card-desc">AI 掃描合約風險，每個字都在保護你</p>
+      </div>
+      <div class="dos-card" style="grid-column: 1 / -1;">
+        <span class="dos-card-num">05</span>
+        <div class="dos-card-title">Memory <span style="font-size:0.7rem;font-weight:300;color:rgba(248,248,252,0.3);font-family:'DM Mono',monospace;letter-spacing:0.08em;">記憶體</span></div>
+        <p class="dos-card-desc">每個案件的判斷與教訓——DUAL 永遠記得。人走了，知識留下來。</p>
+      </div>
     </div>
   </div>
 </section>
