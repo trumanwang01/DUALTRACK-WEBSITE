@@ -85,6 +85,13 @@ nav {
   text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--white); }
+.nav-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px !important; opacity: 0.45;
+  border: 0.5px solid var(--border); padding: 4px 12px; border-radius: 980px;
+  transition: opacity 0.2s, border-color 0.2s !important;
+}
+.nav-back:hover { opacity: 0.85 !important; border-color: rgba(248,248,252,0.25) !important; }
 .nav-cta {
   font-family: var(--body); font-size: 13px; font-weight: 400;
   color: var(--bg); background: var(--accent);
@@ -648,11 +655,12 @@ footer {
 <nav>
   <a href="#" class="nav-logo">DUAL <span style="color:var(--accent);">OS</span></a>
   <ul class="nav-links">
+    <li><a href="index.html" class="nav-back">← DUAL TRACK</a></li>
     <li><a href="#modules">模組</a></li>
     <li><a href="#flow">流程</a></li>
     <li><a href="#brain">Agency Brain</a></li>
   </ul>
-  <a href="#cta" class="nav-cta">申請 Demo</a>
+  <a href="dual-tri-mode.html" class="nav-cta">會員登入</a>
 </nav>
 
 <!-- HERO -->
@@ -667,7 +675,7 @@ footer {
     好的人才可能會離開，<em>但好的系統不會。</em>
   </p>
   <div class="hero-btns">
-    <a href="#cta" class="btn-p">Talk to DUAL</a>
+    <a href="dual-tri-mode.html" class="btn-p">Talk to DUAL</a>
   </div>
   <div class="hero-scroll">
     <div class="scroll-line"></div>
@@ -1001,7 +1009,7 @@ footer {
   <h2 class="cta-hl">讓系統成為<br>你的護城河</h2>
   <p class="cta-sub">DUAL 現在開放早期合作夥伴申請。與我們一起定義娛樂產業的下一套作業系統。</p>
   <div class="cta-btns">
-    <a href="mailto:hello@dualtrack.co" class="btn-p">申請早期體驗</a>
+    <a href="dual-tri-mode.html" class="btn-p">申請早期體驗</a>
     <a href="#modules" class="btn-g">重新了解產品</a>
   </div>
 </section>
@@ -1037,7 +1045,7 @@ animRing();
 const hoverMap = [
   ['.btn-p', '申請'],
   ['.btn-g', '了解'],
-  ['.nav-cta', '申請'],
+  ['.nav-cta', '登入'],
   ['.mod-pill', '功能'],
   ['.mod', 'VIEW'],
   ['.flow-step', 'ACT'],
