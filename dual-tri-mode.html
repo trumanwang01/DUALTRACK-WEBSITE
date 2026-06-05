@@ -497,6 +497,16 @@ body.vyve-active .kb-side-foot .badge{ background:#1a1a22; color:#b8b5ae; border
 .vyve-bullet:last-child{ border-bottom:none; }
 .vyve-bullet::before{ content:''; width:5px; height:5px; border-radius:50%; background:#7c4dff; margin-top:8px; flex-shrink:0; }
 .vyve-bullet b{ color:#f0ece4; font-weight:600; }
+.vyve-strat{ background:#121218; border:.5px solid #1e1e28; border-radius:12px; padding:18px 20px; margin-bottom:10px; display:flex; gap:16px; }
+.vyve-strat-num{ font-family:'Noto Sans TC',sans-serif; font-weight:900; font-size:28px; line-height:1; color:#2c2c3a; flex-shrink:0; width:32px; }
+.vyve-strat-body{ flex:1; }
+.vyve-strat-ref{ font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.14em; color:#e040fb; text-transform:uppercase; margin-bottom:5px; }
+.vyve-strat-title{ font-size:14px; font-weight:700; color:#f0ece4; margin-bottom:6px; }
+.vyve-strat-desc{ font-size:12.5px; color:#9a98a4; line-height:1.78; }
+.vyve-strat-apply{ font-size:12.5px; color:#c8c4bc; line-height:1.8; margin-top:10px; padding:10px 13px; background:rgba(124,77,255,.07); border-left:1.5px solid #7c4dff; border-radius:0 6px 6px 0; }
+.vyve-strat-apply b{ color:#f0ece4; }
+.vyve-strat-apply code{ font-family:'DM Mono',monospace; font-size:10.5px; color:#c8a0ff; background:rgba(124,77,255,.12); padding:1px 5px; border-radius:2px; }
+@media (max-width:640px){ .vyve-strat{ flex-direction:column; gap:8px; padding:15px 16px; } .vyve-strat-num{ font-size:22px; } }
 .vyve-cap{ background:#1a1a22; border-radius:6px; padding:9px 14px; margin:6px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; }
 .vyve-cap .cx{ font-family:'DM Mono',monospace; font-size:13px; color:#f0ece4; letter-spacing:.5px; }
 .vyve-cap .cn{ font-size:11px; color:#68667a; text-align:right; flex-shrink:0; }
@@ -2857,14 +2867,53 @@ body.vyve-active .g-punch{ color:#9a98a8; }
     <div class="vyve-drow"><span class="dk">1 Pro : 2 Casual</span><span class="dv">每 3 篇有 1 篇 Pro 感（高品質場景大圖 / DJ 全身），其餘是 casual（刺青特寫、杯子、CUXI 背影、夾鏈袋近景）。Grid 深淺色調交替，不要連三張全黑或全亮。</span></div>
   </div>
 
-  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">五大內容策略</span><span class="meta">Content Strategy · 從頂尖帳號拆解</span></div>
-  <div class="vyve-dcard">
-    <div class="vyve-drow"><span class="dk">Photo Dump</span><span class="dv"><strong>讓粉絲翻私人相簿</strong>（參考 Jennie）。一次 6–10 張，不需高度相關，每張是不同時間片段但同一頻率。</span></div>
-    <div class="vyve-drow"><span class="dk">微片段敘事</span><span class="dv"><strong>圈內人才看得到的珍貴感</strong>（參考 Ariana）。5–10 秒律動殘影、選歌瞬間、環境光變化，每段至少出現一個標誌行為。</span></div>
-    <div class="vyve-drow"><span class="dk">情緒的空間</span><span class="dv"><strong>不是情緒的說明</strong>（重新定義 Selena）。她不說「今天很累」，讓深夜便利商店替她說。Caption 是另一個空間，不是說明書。</span></div>
-    <div class="vyve-drow"><span class="dk">彩蛋行銷</span><span class="dv"><strong>讓粉絲成為偵探</strong>（參考 Taylor）。夾鏈袋每次放不同東西、背景路牌、caption 數字（<code>ep.04</code>）、CUXI 生日出現。每 3 篇一個就夠。</span></div>
-    <div class="vyve-drow"><span class="dk">情緒渲染</span><span class="dv"><strong>讓人感受一種狀態</strong>（參考 ROSÉ）。每張圖發出前問：「這張讓你感覺到什麼狀態？」說不出來就不夠好。</span></div>
+  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">五大內容策略</span><span class="meta">Content Strategy · 從頂尖帳號拆解，重新定義給 VYVE</span></div>
+  <div class="vyve-strat">
+    <div class="vyve-strat-num">01</div>
+    <div class="vyve-strat-body">
+      <div class="vyve-strat-ref">參考 · Jennie</div>
+      <div class="vyve-strat-title">Photo Dump · 讓粉絲翻私人相簿</div>
+      <div class="vyve-strat-desc">一次上傳 6–10 張，內容不需要高度相關。讓粉絲感覺在翻 VYVE 的私人手機相簿。每張圖都是不同的時間片段，但同屬一個頻率。</div>
+      <div class="vyve-strat-apply"><b>VYVE 版本範例組合：</b>她的側臉（模糊）→ DJ 台某個 knob 的特寫 → 便利商店飲料櫃的冷光 → 手腕刺青 → CUXI 睡著的背影 → 全暗的圖 → 透明夾鏈袋（看不清楚裡面）。讓人翻到最後一張還想再翻一次。</div>
+    </div>
   </div>
+  <div class="vyve-strat">
+    <div class="vyve-strat-num">02</div>
+    <div class="vyve-strat-body">
+      <div class="vyve-strat-ref">參考 · Ariana Grande</div>
+      <div class="vyve-strat-title">微片段敘事 · 圈內人才看得到的珍貴感</div>
+      <div class="vyve-strat-desc">不要只放完整影片。放 5–10 秒的律動殘影、選歌瞬間、或某個空間的環境光變化。讓粉絲覺得這是「只有追 VYVE 才看得到的東西」。</div>
+      <div class="vyve-strat-apply"><b>VYVE 版本：</b>她在 DJ 台前的手部特寫（只看到手轉 knob，看不到全身）、耳機掛著但耳機線隨風晃動的 5 秒、深夜便利商店門口的雨聲和燈光。<b>這些片段裡要出現至少一個標誌行為。</b></div>
+    </div>
+  </div>
+  <div class="vyve-strat">
+    <div class="vyve-strat-num">03</div>
+    <div class="vyve-strat-body">
+      <div class="vyve-strat-ref">參考 · Selena Gomez · 重新定義</div>
+      <div class="vyve-strat-title">情緒的空間，不是情緒的說明</div>
+      <div class="vyve-strat-desc">Selena 用文字說出脆弱，VYVE 用空間說出情緒。她不說「今天很累」，她讓那個深夜的便利商店替她說。Caption 不是情緒說明書，是另一個空間。</div>
+      <div class="vyve-strat-apply"><b>VYVE 版本：</b>一張深夜街道的圖，caption 只有 <code>04:12</code> 或 <code>taipei.</code> 或什麼都沒有。粉絲用留言填補那個空白——這些留言本身就是互動數據。</div>
+    </div>
+  </div>
+  <div class="vyve-strat">
+    <div class="vyve-strat-num">04</div>
+    <div class="vyve-strat-body">
+      <div class="vyve-strat-ref">參考 · Taylor Swift</div>
+      <div class="vyve-strat-title">彩蛋行銷 · 讓粉絲成為偵探</div>
+      <div class="vyve-strat-desc">在照片背景隱藏線索，引發粉絲在留言區解讀。留言互動直接提升算法分數。彩蛋不需要每張都有，每 3 篇放一個就夠——稀缺才有驚喜感。</div>
+      <div class="vyve-strat-apply"><b>VYVE 版本彩蛋類型：</b><br>· 透明夾鏈袋裡每次放不同東西，從來不解釋<br>· 背景模糊的地名或路牌（下一個出現的場景）<br>· Caption 裡的數字（<code>ep.04</code> 但不說明是什麼的第四集）<br>· CUXI 每年生日那天出現（粉絲發現這個規律就是彩蛋）</div>
+    </div>
+  </div>
+  <div class="vyve-strat">
+    <div class="vyve-strat-num">05</div>
+    <div class="vyve-strat-body">
+      <div class="vyve-strat-ref">參考 · ROSÉ · 情緒渲染</div>
+      <div class="vyve-strat-title">情緒渲染 · 讓人感受到一種狀態</div>
+      <div class="vyve-strat-desc">ROSÉ 的貼文不是在展示她有多漂亮，而是讓你感覺到一種特定的情緒——慵懶的午後、有點憂鬱的深夜。這跟 VYVE 的空間邏輯高度對應。</div>
+      <div class="vyve-strat-apply"><b>VYVE 版本：</b>每張圖發出去之前問一個問題：<b>「這張圖讓你感覺到什麼狀態？」</b>如果說不出來，就不夠好。目標是每張圖都能讓人說「這是深夜失眠的感覺」或「這是週五下班後鬆一口氣的感覺」。</div>
+    </div>
+  </div>
+  <div class="note" style="background:rgba(124,77,255,.06);border:.5px solid rgba(124,77,255,.2);">Kim K 色調統一感補充：VYVE 的 Grid 不是要求同一個色調，而是確保每張圖都有「深色空間 + 一個光源 + 人物在邊緣」的構圖邏輯——比強行統一濾鏡更有力，也更有彈性。</div>
 
   <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">Feed × Stories × Reels</span><span class="meta">三平台分工</span></div>
   <div class="vyve-dcard">
