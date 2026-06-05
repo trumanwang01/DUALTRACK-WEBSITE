@@ -76,6 +76,18 @@ body.mode-kb ::selection{ background:#1d4ed8; color:#fff; }
 .kb-search-ico{ position:absolute; left:18px; top:50%; transform:translateY(-50%); width:18px; height:18px; color:#737373; pointer-events:none; }
 .kb-search-ico svg{ width:100%; height:100%; stroke:currentColor; stroke-width:1.8; fill:none; stroke-linecap:round; }
 .kb-search-hint{ position:absolute; right:14px; top:50%; transform:translateY(-50%); font-family:'DM Mono',monospace; font-size:10.5px; color:#a3a3a3; background:#f5f5f5; padding:3px 8px; border-radius:5px; border:1px solid #e5e3dd; pointer-events:none; }
+/* search results dropdown */
+.kb-search-results{ position:absolute; left:0; right:0; top:calc(100% + 6px); background:#fff; border:1px solid #e5e3dd; border-radius:12px; box-shadow:0 14px 36px rgba(0,0,0,0.13); z-index:120; max-height:360px; overflow-y:auto; display:none; padding:6px; }
+.kb-search-results.open{ display:block; }
+.kb-search-result{ display:flex; align-items:center; gap:11px; padding:10px 12px; border-radius:8px; cursor:pointer; font-size:13.5px; color:#0d0d0d; transition:background .12s; }
+.kb-search-result:hover, .kb-search-result.active{ background:#eef2ff; }
+.kb-search-result .r-ico{ width:15px; height:15px; flex:0 0 auto; color:#1d4ed8; display:inline-flex; }
+.kb-search-result .r-ico svg{ width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+.kb-search-result .r-grp{ margin-left:auto; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.06em; color:#a3a3a3; white-space:nowrap; }
+.kb-search-empty{ padding:14px 12px; color:#a3a3a3; font-size:13px; }
+body.vyve-active .kb-search-results{ background:#121218; border-color:#1e1e28; }
+body.vyve-active .kb-search-result{ color:#e8e6e0; }
+body.vyve-active .kb-search-result:hover, body.vyve-active .kb-search-result.active{ background:#1a1a22; }
 .kb-h{ font-family:'Noto Sans TC',sans-serif; font-weight:700; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:#737373; margin-bottom:14px; display:flex; align-items:center; gap:10px; }
 .kb-h::after{ content:""; flex:1; height:1px; background:#e5e3dd; }
 .kb-h .more{ font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.1em; color:#1d4ed8; cursor:pointer; }
@@ -2067,6 +2079,20 @@ body.vyve-active .g-punch{ color:#9a98a8; }
     </div>
   </div>
 
+  <!-- 1. 核心定位 -->
+  <div class="kb-ws-h"><span class="n">01</span><span class="lab">核心定位</span><span class="meta">Character Core</span></div>
+  <div class="kb-ident">
+    <p class="kb-ident-q">VYVE 是 DUAL Entertainment 旗下的虛擬 DJ／Model／Dancer，2026 年出道於台灣。她以 Techno 為核心音樂語言，定位於台北、東京、首爾的地下音樂場景，觸及對音樂、空間與視覺有高度偏執的 18–35 歲都會受眾。作為 AI 原生虛擬 IP，她不受語言、時區與物理限制，可同步觸達全球市場——從亞洲地下電音圈到歐美 Techno 文化場景，內容無需在地化即具備跨文化共鳴。她的商業價值建立在長期 IP 資產的可授權性與可延展性——從 YouTube 陪伴音樂頻道到空間品牌合作、音樂版權授權，VYVE 是一個不依賴真人限制、可持續跨市場生長的文化 IP。</p>
+    <div class="kb-ident-meta">
+      <div class="kb-ident-row"><span class="k">名字</span><span class="v">VYVE WANG · /vaɪv/</span></div>
+      <div class="kb-ident-row"><span class="k">國籍</span><span class="v">台灣 · 新北長大</span></div>
+      <div class="kb-ident-row"><span class="k">星座</span><span class="v">金牛 · 5/11</span></div>
+      <div class="kb-ident-row"><span class="k">血型</span><span class="v">AB</span></div>
+      <div class="kb-ident-row"><span class="k">MBTI</span><span class="v">ISTP · 行動派內向</span></div>
+      <div class="kb-ident-row"><span class="k">三圍</span><span class="v">82 / 61 / 88 · 肩 37</span></div>
+    </div>
+  </div>
+
   <!-- SIGNAL ALBUM -->
   <div class="kb-ws-h" id="album-section"><span class="n">·</span><span class="lab">SIGNAL · 出道專輯</span><span class="meta">2026 · 首發</span></div>
   <div class="kb-album">
@@ -2138,20 +2164,6 @@ body.vyve-active .g-punch{ color:#9a98a8; }
     <div class="kb-vid is-portrait"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/c42b5e30f5c854319b2b80504900ba61/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">OPENART · 02</span><span class="kb-vid-tag">草稿</span></div></div>
     <div class="kb-vid is-portrait"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/84b139519577aa4869d558bc061b5b6b/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">OPENART · 03</span><span class="kb-vid-tag">草稿</span></div></div>
     <div class="kb-vid is-portrait"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/76b6593c755973fab04ed2684ee14a90/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">AI GEN · 01</span><span class="kb-vid-tag">Gemini</span></div></div>
-  </div>
-
-  <!-- 1. 核心定位 -->
-  <div class="kb-ws-h"><span class="n">01</span><span class="lab">核心定位</span><span class="meta">Character Core</span></div>
-  <div class="kb-ident">
-    <p class="kb-ident-q">沒有人知道她從哪來。她就出現。凌晨 3 點的便利商店、夜市收攤後的街道、末班車的車廂、誰都不去的停車場頂樓。她帶著器材，把音樂放進這些空間裡，站在那——<b>像她本來就該在那裡</b>。</p>
-    <div class="kb-ident-meta">
-      <div class="kb-ident-row"><span class="k">名字</span><span class="v">VYVE WANG · /vaɪv/</span></div>
-      <div class="kb-ident-row"><span class="k">國籍</span><span class="v">台灣 · 新北長大</span></div>
-      <div class="kb-ident-row"><span class="k">星座</span><span class="v">金牛 · 5/11</span></div>
-      <div class="kb-ident-row"><span class="k">血型</span><span class="v">AB</span></div>
-      <div class="kb-ident-row"><span class="k">MBTI</span><span class="v">ISTP · 行動派內向</span></div>
-      <div class="kb-ident-row"><span class="k">三圍</span><span class="v">82 / 61 / 88 · 肩 37</span></div>
-    </div>
   </div>
 
   <!-- 2. 三身 -->
@@ -4140,8 +4152,9 @@ body.vyve-active .g-punch{ color:#9a98a8; }
   <!-- SEARCH -->
   <div class="kb-search-wrap" style="margin-bottom:28px;">
     <span class="kb-search-ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></span>
-    <input class="kb-search" id="kbSearch" type="text" placeholder="搜尋：藝人、IP、議題、品牌、SOP、詞彙、夥伴⋯">
+    <input class="kb-search" id="kbSearch" type="text" placeholder="搜尋：藝人、IP、議題、品牌、SOP、詞彙、夥伴⋯" autocomplete="off">
     <span class="kb-search-hint">⌘ K</span>
+    <div class="kb-search-results" id="kbSearchResults"></div>
   </div>
 
   <!-- 本日八卦 -->
@@ -5053,17 +5066,85 @@ document.querySelectorAll('.kb-prompt-copy').forEach(btn=>{
 });
 
 // === SEARCH FILTER (home only) ===
-const kbSearch=document.getElementById('kbSearch');
-if(kbSearch){
-  kbSearch.addEventListener('input',()=>{
-    const q=kbSearch.value.trim().toLowerCase();
-    document.querySelectorAll('#kbFeed .kb-feed-row, #kbGloss .kb-gloss, .kb-ipcard').forEach(el=>{
-      if(!q){ el.classList.remove('kb-hidden'); return; }
-      const txt=el.textContent.toLowerCase();
-      el.classList.toggle('kb-hidden', !txt.includes(q));
-    });
+// === Dashboard global search → jump to the matching workspace/section ===
+(function(){
+  const box = document.getElementById('kbSearch');
+  const panel = document.getElementById('kbSearchResults');
+  if(!box || !panel) return;
+
+  // synonym terms -> the exact nav label they should surface
+  const ALIASES = {
+    'vyve':'VYVE','薇薇':'VYVE','dj':'VYVE','虛擬偶像':'VYVE',
+    'truman':'王楚門 TRUMAN','楚門':'王楚門 TRUMAN','大叔':'王楚門 TRUMAN',
+    '報價':'服務報價','價格':'服務報價','收費':'服務報價','費用':'服務報價',
+    '品牌':'客戶案例','客戶':'客戶案例','案例':'客戶案例',
+    '夥伴':'生態夥伴','供應商':'生態夥伴','生態':'生態夥伴','攝影':'生態夥伴',
+    '議題':'議題庫','話題':'議題庫','熱點':'議題庫',
+    '帶狀':'帶狀企劃','企劃':'帶狀企劃',
+    '團隊':'核心團隊','成員':'核心團隊','創辦':'核心團隊',
+    '路線圖':'12 個月路線圖','營收':'12 個月路線圖','roadmap':'12 個月路線圖','里程碑':'12 個月路線圖',
+    '護城河':'公司簡介','moat':'公司簡介','願景':'願景 2030',
+    'os':'DUAL OS 文件','系統':'DUAL OS 文件','大腦':'DUAL OS 文件','brain':'DUAL OS 文件',
+    '模組':'五技能模組','技能':'五技能模組',
+    '方法論':'議題先行方法論','議題先行':'議題先行方法論',
+    '詞彙':'詞彙表','術語':'詞彙表','名詞':'詞彙表',
+    '工具':'工具棧','成本':'工具棧','tool':'工具棧',
+    'sop':'SOP 文件','流程':'SOP 文件','模板':'模板庫',
+    '學院':'學院總覽','academy':'學院總覽','培訓':'學院總覽','課程':'學院總覽','認證':'學院總覽',
+    '業務':'業務總覽','服務':'業務總覽','五大':'業務總覽',
+    '專案':'專案管理','財務':'財務管理','分潤':'財務管理',
+    '首頁':'Dashboard','dashboard':'Dashboard','儀表板':'Dashboard',
+    'ip管理':'IP管理學院','經紀':'IP管理學院','藝人':'藝人陣容'
+  };
+  const aliasByLabel = {};
+  Object.keys(ALIASES).forEach(t=>{ const L=ALIASES[t]; (aliasByLabel[L]=aliasByLabel[L]||[]).push(t); });
+
+  const index = [...document.querySelectorAll('.kb-nav-item[data-ws]')].map(item=>{
+    const labEl = item.querySelector('.kb-nav-lab');
+    const label = labEl ? labEl.textContent.trim() : '';
+    const grpEl = item.closest('.kb-nav-group');
+    const groupFull = grpEl && grpEl.querySelector('.nav-div-text') ? grpEl.querySelector('.nav-div-text').textContent.trim() : '';
+    const parts = groupFull.split('·');
+    const grp = (parts[1] || parts[0] || '').trim();
+    const extra = (aliasByLabel[label] || []).join(' ');
+    return { item, label, grp, hay:(label+' '+groupFull+' '+extra).toLowerCase() };
+  }).filter(x=>x.label);
+
+  let current = [];
+  const ARROW = '<span class="r-ico"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>';
+  function esc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+  function render(){
+    if(!current.length){
+      panel.innerHTML = '<div class="kb-search-empty">找不到相關區塊，換個關鍵字試試（例如：VYVE、議題、報價、夥伴、SOP、學院）。</div>';
+      panel.classList.add('open'); return;
+    }
+    panel.innerHTML = current.map((m,i)=>
+      '<div class="kb-search-result'+(i===0?' active':'')+'" data-i="'+i+'">'+ARROW+
+      '<span>'+esc(m.label)+'</span><span class="r-grp">'+esc(m.grp)+'</span></div>').join('');
+    panel.classList.add('open');
+  }
+  function close(){ panel.classList.remove('open'); panel.innerHTML=''; }
+  function go(m){ if(!m) return; close(); box.value=''; box.blur(); m.item.click(); }
+
+  box.addEventListener('input', ()=>{
+    const q = box.value.trim().toLowerCase();
+    if(!q){ close(); return; }
+    current = index.filter(x=>x.hay.includes(q)).slice(0,10);
+    render();
   });
-}
+  box.addEventListener('keydown', e=>{
+    if(!panel.classList.contains('open')) return;
+    const rows = [...panel.querySelectorAll('.kb-search-result')];
+    let ai = rows.findIndex(r=>r.classList.contains('active'));
+    if(e.key==='ArrowDown'){ e.preventDefault(); if(rows.length){ if(ai>=0)rows[ai].classList.remove('active'); ai=(ai+1)%rows.length; rows[ai].classList.add('active'); rows[ai].scrollIntoView({block:'nearest'}); } }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); if(rows.length){ if(ai>=0)rows[ai].classList.remove('active'); ai=(ai-1+rows.length)%rows.length; rows[ai].classList.add('active'); rows[ai].scrollIntoView({block:'nearest'}); } }
+    else if(e.key==='Enter'){ e.preventDefault(); go(current[ai<0?0:ai]); }
+    else if(e.key==='Escape'){ close(); box.blur(); }
+  });
+  panel.addEventListener('click', e=>{ const row=e.target.closest('.kb-search-result'); if(row) go(current[+row.dataset.i]); });
+  document.addEventListener('click', e=>{ if(!e.target.closest('.kb-search-wrap')) close(); });
+})();
 
 // === KB-WS-ACTION buttons (scroll to in-page anchors within active workspace) ===
 document.querySelectorAll('.kb-ws-action').forEach(btn=>{
