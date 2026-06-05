@@ -413,6 +413,41 @@ body.vyve-active .kb-side-foot .badge{ background:#1a1a22; color:#b8b5ae; border
 .kb-ws-vyve.active .kb-ident-meta{ border-top-color:#1e1e28; }
 .kb-ws-vyve.active .kb-ident-row .k{ color:#42404a; }
 .kb-ws-vyve.active .kb-ident-row .v{ color:#e8e6e0; }
+
+/* ── VYVE hero title highlight ── */
+.vyve-hero-title{ display:flex; flex-direction:column; gap:12px; }
+.kb-ws-vyve .vyve-name{ width:fit-content; font-size:1.05em; font-weight:900; background:linear-gradient(92deg,#a78bfa 0%,#7c4dff 45%,#e040fb 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+.kb-ws-vyve .vyve-claim{ font-size:1.02em; color:#f0ece4; line-height:1.15; }
+.kb-ws-vyve .vyve-claim .hl{ color:#e040fb; position:relative; white-space:nowrap; }
+.kb-ws-vyve .vyve-claim .hl::after{ content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:linear-gradient(90deg,#7c4dff,#e040fb); border-radius:2px; transform:scaleX(0); transform-origin:left; }
+@keyframes vyveUnderline{ to{ transform:scaleX(1); } }
+@keyframes vyveClaimIn{ from{ opacity:0; transform:translateY(12px); } to{ opacity:1; transform:none; } }
+.kb-ws-vyve.active .vyve-claim{ animation:vyveClaimIn .55s ease .15s both; }
+.kb-ws-vyve.active .vyve-claim .hl::after{ animation:vyveUnderline .6s cubic-bezier(.4,0,.2,1) .6s both; }
+
+/* ── VYVE core positioning redesign ── */
+.vyve-core{ position:relative; overflow:hidden; padding-left:34px; }
+.vyve-core::before{ content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(180deg,#7c4dff,#e040fb); }
+.vyve-core-badge{ display:inline-block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.16em; color:#c8a0ff; background:rgba(124,77,255,.12); border:.5px solid rgba(124,77,255,.32); padding:5px 12px; border-radius:980px; margin-bottom:18px; }
+.vyve-core .kb-ident-q{ font-size:1.14rem; line-height:1.95; max-width:64ch; }
+.vyve-core-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:26px; padding-top:0; border-top:none; }
+.vyve-core-grid .kb-ident-row{ gap:6px; padding:14px 16px; background:#161620; border:.5px solid #23232e; border-radius:10px; transition:border-color .25s, transform .25s; }
+.vyve-core-grid .kb-ident-row:hover{ border-color:#7c4dff; transform:translateY(-2px); }
+.kb-ws-vyve.active .vyve-core-grid .kb-ident-row{ animation:vyveClaimIn .5s ease both; }
+.vyve-core-grid .kb-ident-row:nth-child(1){ animation-delay:.05s; }
+.vyve-core-grid .kb-ident-row:nth-child(2){ animation-delay:.12s; }
+.vyve-core-grid .kb-ident-row:nth-child(3){ animation-delay:.19s; }
+.vyve-core-grid .kb-ident-row:nth-child(4){ animation-delay:.26s; }
+.vyve-core-grid .kb-ident-row:nth-child(5){ animation-delay:.33s; }
+
+/* ── VYVE category tabs ── */
+.vyve-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 28px; }
+.vyve-tab{ font-family:'Noto Sans TC',sans-serif; font-weight:700; font-size:13px; letter-spacing:.02em; color:#a8a59f; background:#161620; border:.5px solid #23232e; padding:9px 18px; border-radius:980px; cursor:pointer; transition:color .2s,background .2s,border-color .2s; display:inline-flex; align-items:center; gap:7px; white-space:nowrap; }
+.vyve-tab .vyve-tab-en{ font-family:'DM Mono',monospace; font-size:9.5px; letter-spacing:.1em; opacity:.6; }
+.vyve-tab:hover{ color:#f0ece4; border-color:#3a3a48; }
+.vyve-tab.active{ color:#fff; background:linear-gradient(92deg,#7c4dff,#db2777); border-color:transparent; }
+@media (max-width:880px){ .vyve-tabs{ overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; padding-bottom:8px; } }
+.vyve-cat-hidden{ display:none !important; }
 .kb-ws-vyve.active .kb-tri-card{ background:#121218; border-color:#1e1e28; }
 .kb-ws-vyve.active .kb-tri-name{ color:#f0ece4; }
 .kb-ws-vyve.active .kb-tri-desc{ color:#68667a; }
@@ -2039,7 +2074,7 @@ body.vyve-active .g-punch{ color:#9a98a8; }
         <span class="kb-ws-id-tag">VYVE</span>
         <span class="kb-status-active">主力中 · M1 W2</span>
       </div>
-      <h1 class="kb-ws-title">VYVE WANG — <em>還在感受</em>，不說話。</h1>
+      <h1 class="kb-ws-title vyve-hero-title"><span class="vyve-name">VYVE WANG</span><span class="vyve-claim">還在感受，<span class="hl">不說話</span>。</span></h1>
       <p class="kb-ws-sub">25 歲 · DJ / Model / Dancer · YouTube 主戰場 · 2-4 小時陪伴音樂 · NT$5,800/月工具成本</p>
     </div>
   </div>
@@ -2079,17 +2114,20 @@ body.vyve-active .g-punch{ color:#9a98a8; }
     </div>
   </div>
 
+  <!-- VYVE 分類頁籤 -->
+  <div class="vyve-tabs" id="vyveTabs"></div>
+
   <!-- 1. 核心定位 -->
   <div class="kb-ws-h"><span class="n">01</span><span class="lab">核心定位</span><span class="meta">Character Core</span></div>
-  <div class="kb-ident">
+  <div class="kb-ident vyve-core">
+    <span class="vyve-core-badge">CORE POSITIONING · 核心定位</span>
     <p class="kb-ident-q">VYVE 是 DUAL Entertainment 旗下的虛擬 DJ／Model／Dancer，2026 年出道於台灣。她以 Techno 為核心音樂語言，定位於台北、東京、首爾的地下音樂場景，觸及對音樂、空間與視覺有高度偏執的 18–35 歲都會受眾。作為 AI 原生虛擬 IP，她不受語言、時區與物理限制，可同步觸達全球市場——從亞洲地下電音圈到歐美 Techno 文化場景，內容無需在地化即具備跨文化共鳴。她的商業價值建立在長期 IP 資產的可授權性與可延展性——從 YouTube 陪伴音樂頻道到空間品牌合作、音樂版權授權，VYVE 是一個不依賴真人限制、可持續跨市場生長的文化 IP。</p>
-    <div class="kb-ident-meta">
+    <div class="kb-ident-meta vyve-core-grid">
       <div class="kb-ident-row"><span class="k">名字</span><span class="v">VYVE WANG · /vaɪv/</span></div>
       <div class="kb-ident-row"><span class="k">國籍</span><span class="v">台灣 · 新北長大</span></div>
       <div class="kb-ident-row"><span class="k">星座</span><span class="v">金牛 · 5/11</span></div>
       <div class="kb-ident-row"><span class="k">血型</span><span class="v">AB</span></div>
       <div class="kb-ident-row"><span class="k">MBTI</span><span class="v">ISTP · 行動派內向</span></div>
-      <div class="kb-ident-row"><span class="k">三圍</span><span class="v">82 / 61 / 88 · 肩 37</span></div>
     </div>
   </div>
 
@@ -5150,19 +5188,21 @@ document.querySelectorAll('.kb-prompt-copy').forEach(btn=>{
 document.querySelectorAll('.kb-ws-action').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const action=btn.dataset.action;
-    let targetId=null;
-    if(action==='new-scene') targetId='visual-anchor';
+    let targetId=null, cat=null;
+    if(action==='new-scene'){ targetId='visual-anchor'; cat='visual'; }
     else if(action==='copy-openart'){
-      // trigger copy on first prompt
-      const firstCopy=document.querySelector('.kb-panel.active .kb-prompt-copy');
-      if(firstCopy) firstCopy.click();
+      if(window.__vyveShow) window.__vyveShow('production');
+      setTimeout(()=>{ const firstCopy=document.querySelector('.kb-panel.active .kb-prompt-copy'); if(firstCopy) firstCopy.click(); }, 60);
       return;
     }
-    else if(action==='check-visual') targetId='visual-anchor';
-    else if(action==='check-cross') targetId='cross-ip';
+    else if(action==='check-visual'){ targetId='visual-anchor'; cat='visual'; }
+    else if(action==='check-cross'){ targetId='cross-ip'; }
+    if(cat && window.__vyveShow) window.__vyveShow(cat);
     if(targetId){
-      const el=document.getElementById(targetId);
-      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+      setTimeout(()=>{
+        const el=document.getElementById(targetId);
+        if(el){ const y=el.getBoundingClientRect().top+window.pageYOffset-72; window.scrollTo({top:Math.max(0,y),behavior:'smooth'}); }
+      }, 70);
     }
   });
 });
@@ -5189,13 +5229,66 @@ if(lightbox){
   document.addEventListener('keydown',e=>{ if(e.key==='Escape' && lightbox.classList.contains('open')) closeLightbox(); });
 }
 
-// === Action button: goto-album scroll to album section ===
+// === Action button: goto-album → switch to Music tab + scroll ===
 document.querySelectorAll('[data-action="goto-album"]').forEach(btn=>{
   btn.addEventListener('click',()=>{
-    const el = document.getElementById('album-section');
-    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    if(window.__vyveShow) window.__vyveShow('music');
+    setTimeout(()=>{ const el=document.getElementById('album-section'); if(el){ const y=el.getBoundingClientRect().top+window.pageYOffset-72; window.scrollTo({top:Math.max(0,y),behavior:'smooth'}); } }, 70);
   });
 });
+
+// === VYVE: category tabs — split the long page into clickable sections ===
+(function(){
+  const panel = document.querySelector('.kb-panel[data-workspace="vyve"]');
+  const host = document.getElementById('vyveTabs');
+  if(!panel || !host) return;
+
+  const CATS = [
+    {id:'identity',   zh:'定位', en:'IDENTITY'},
+    {id:'visual',     zh:'視覺', en:'VISUAL'},
+    {id:'music',      zh:'音樂', en:'MUSIC'},
+    {id:'production', zh:'製作', en:'PRODUCTION'},
+    {id:'strategy',   zh:'營運', en:'STRATEGY'}
+  ];
+  function catOf(t){
+    if(/核心定位|三重身份|三身|價值觀|絕對底線|情境對照|關係觀|地理歸屬/.test(t)) return 'identity';
+    if(/SIGNAL|出道專輯|頻率光譜|音樂品味/.test(t)) return 'music';
+    if(/角色參考|人像|Showcase|草稿|視覺一致|標誌性|色調|穿搭/.test(t)) return 'visual';
+    if(/場景庫|Prompt|工具設定|工具棧/.test(t)) return 'production';
+    if(/平台分工|時間軸|變現/.test(t)) return 'strategy';
+    return 'identity';
+  }
+
+  // each header + its following content siblings = one section
+  const headers = [...panel.querySelectorAll('.kb-ws-h')];
+  const sections = headers.map(h=>{
+    const lab = h.querySelector('.lab');
+    const cat = catOf(lab ? lab.textContent.trim() : '');
+    const els = [h]; let n = h.nextElementSibling;
+    while(n && !n.classList.contains('kb-ws-h')){ els.push(n); n = n.nextElementSibling; }
+    return { cat, els };
+  });
+
+  function show(cat){
+    sections.forEach(s=>{ const hide = s.cat!==cat; s.els.forEach(el=>el.classList.toggle('vyve-cat-hidden', hide)); });
+    host.querySelectorAll('.vyve-tab').forEach(t=>t.classList.toggle('active', t.dataset.cat===cat));
+  }
+  window.__vyveShow = show;
+
+  CATS.forEach((c,i)=>{
+    const b = document.createElement('button');
+    b.className = 'vyve-tab' + (i===0 ? ' active' : '');
+    b.dataset.cat = c.id;
+    b.innerHTML = c.zh + ' <span class="vyve-tab-en">' + c.en + '</span>';
+    b.addEventListener('click', ()=>{
+      show(c.id);
+      const y = host.getBoundingClientRect().top + window.pageYOffset - 72;
+      window.scrollTo({ top: Math.max(0, y), behavior:'smooth' });
+    });
+    host.appendChild(b);
+  });
+  show('identity');
+})();
 
 
 // === TRUMAN: script accordion ===
