@@ -508,6 +508,13 @@ body.vyve-active .kb-side-foot .badge{ background:#1a1a22; color:#b8b5ae; border
 .kb-vid-meta{ padding:12px 16px; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-top:1px solid #1f1f1f; }
 .kb-vid-no{ font-family:'DM Mono',monospace; font-size:10px; color:#7c4dff; letter-spacing:.1em; }
 .kb-vid-tag{ font-family:'DM Mono',monospace; font-size:10px; color:#737373; }
+/* ── Cloudflare Stream embeds ─────────────── */
+.kb-vid iframe, .truman-pub-card iframe{ display:block; border:none; background:#0d0d0d; }
+.kb-vid.is-landscape iframe{ width:100%; aspect-ratio:16/9; }
+.kb-vid.is-portrait iframe, .truman-pub-card iframe{ height:520px; width:auto; max-width:100%; aspect-ratio:9/16; margin:0 auto; }
+@media (max-width:680px){
+  .kb-vid.is-portrait iframe, .truman-pub-card iframe{ height:auto; width:100%; }
+}
 
 /* Image lightbox overlay */
 .kb-lightbox{ position:fixed; inset:0; background:rgba(0,0,0,0.96); z-index:1000; display:none; align-items:center; justify-content:center; padding:24px; cursor:zoom-out; }
@@ -2082,21 +2089,21 @@ body.vyve-active .g-punch{ color:#9a98a8; }
   <!-- VIDEO: Showcase (finalized) -->
   <div class="kb-ws-h"><span class="n">·</span><span class="lab">Showcase 影片</span><span class="meta">6 支 · 完整輸出</span></div>
   <div class="kb-vidgrid">
-    <div class="kb-vid"><video controls preload="metadata" src="./assets/vyve/showcase-01.mp4" poster="./assets/vyve/showcase-01-poster.jpg"></video><div class="kb-vid-meta"><span class="kb-vid-no">SHOWCASE · 01</span><span class="kb-vid-tag">已完成</span></div></div>
-    <div class="kb-vid"><video controls preload="metadata" src="./assets/vyve/showcase-02.mp4" poster="./assets/vyve/showcase-02-poster.jpg"></video><div class="kb-vid-meta"><span class="kb-vid-no">SHOWCASE · 02</span><span class="kb-vid-tag">已完成</span></div></div>
-    <div class="kb-vid"><video controls preload="metadata" src="./assets/vyve/showcase-03.mp4" poster="./assets/vyve/showcase-03-poster.jpg"></video><div class="kb-vid-meta"><span class="kb-vid-no">SHOWCASE · 03</span><span class="kb-vid-tag">已完成</span></div></div>
-    <div class="kb-vid"><video controls preload="metadata" src="./assets/vyve/showcase-04.mp4" poster="./assets/vyve/showcase-04-poster.jpg"></video><div class="kb-vid-meta"><span class="kb-vid-no">SHOWCASE · 04</span><span class="kb-vid-tag">已完成</span></div></div>
-    <div class="kb-vid"><video controls preload="metadata" src="./assets/vyve/showcase-05.mp4" poster="./assets/vyve/showcase-05-poster.jpg"></video><div class="kb-vid-meta"><span class="kb-vid-no">SHOWCASE · 05</span><span class="kb-vid-tag">已完成</span></div></div>
-    <div class="kb-vid"><video controls preload="metadata" src="./assets/vyve/showcase-06.mp4" poster="./assets/vyve/showcase-06-poster.jpg"></video><div class="kb-vid-meta"><span class="kb-vid-no">SHOWCASE · 06</span><span class="kb-vid-tag">已完成</span></div></div>
+    <div class="kb-vid is-landscape"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/21fc32ed328c9af1a427c4e283d02f17/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">SHOWCASE · 01</span><span class="kb-vid-tag">已完成</span></div></div>
+    <div class="kb-vid is-landscape"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/89a1d2cd43ff57d11b157cabd549c473/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">SHOWCASE · 02</span><span class="kb-vid-tag">已完成</span></div></div>
+    <div class="kb-vid is-landscape"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/aa5992b6bb61e25be74b0377507e2027/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">SHOWCASE · 03</span><span class="kb-vid-tag">已完成</span></div></div>
+    <div class="kb-vid is-landscape"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/345e6e3783e89ddcaa365bb82f244946/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">SHOWCASE · 04</span><span class="kb-vid-tag">已完成</span></div></div>
+    <div class="kb-vid is-landscape"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/f1b85d5677082a4220d49f21cef21a7f/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">SHOWCASE · 05</span><span class="kb-vid-tag">已完成</span></div></div>
+    <div class="kb-vid is-landscape"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/69febf5ab28e7f05e76ef83b789729a6/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">SHOWCASE · 06</span><span class="kb-vid-tag">已完成</span></div></div>
   </div>
 
   <!-- VIDEO: Raw drafts -->
   <div class="kb-ws-h"><span class="n">·</span><span class="lab">草稿素材</span><span class="meta">4 支 · OpenArt + Gemini raw</span></div>
   <div class="kb-vidgrid">
-    <div class="kb-vid"><video controls preload="metadata" src="./assets/vyve/openart-01.mp4" poster="./assets/vyve/openart-01-poster.jpg"></video><div class="kb-vid-meta"><span class="kb-vid-no">OPENART · 01</span><span class="kb-vid-tag">草稿</span></div></div>
-    <div class="kb-vid"><video controls preload="metadata" src="./assets/vyve/openart-02.mp4" poster="./assets/vyve/openart-02-poster.jpg"></video><div class="kb-vid-meta"><span class="kb-vid-no">OPENART · 02</span><span class="kb-vid-tag">草稿</span></div></div>
-    <div class="kb-vid"><video controls preload="metadata" src="./assets/vyve/openart-03.mp4" poster="./assets/vyve/openart-03-poster.jpg"></video><div class="kb-vid-meta"><span class="kb-vid-no">OPENART · 03</span><span class="kb-vid-tag">草稿</span></div></div>
-    <div class="kb-vid"><video controls preload="metadata" src="./assets/vyve/ai-gen-01.mp4" poster="./assets/vyve/ai-gen-01-poster.jpg"></video><div class="kb-vid-meta"><span class="kb-vid-no">AI GEN · 01</span><span class="kb-vid-tag">Gemini</span></div></div>
+    <div class="kb-vid is-portrait"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/c111179f35f6e3d147b862d32262c5a2/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">OPENART · 01</span><span class="kb-vid-tag">草稿</span></div></div>
+    <div class="kb-vid is-portrait"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/c42b5e30f5c854319b2b80504900ba61/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">OPENART · 02</span><span class="kb-vid-tag">草稿</span></div></div>
+    <div class="kb-vid is-portrait"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/84b139519577aa4869d558bc061b5b6b/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">OPENART · 03</span><span class="kb-vid-tag">草稿</span></div></div>
+    <div class="kb-vid is-portrait"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/76b6593c755973fab04ed2684ee14a90/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">AI GEN · 01</span><span class="kb-vid-tag">Gemini</span></div></div>
   </div>
 
   <!-- 1. 核心定位 -->
@@ -4377,7 +4384,7 @@ body.vyve-active .g-punch{ color:#9a98a8; }
   </div>
   <div class="truman-published">
     <div class="truman-pub-card feature">
-      <video controls preload="metadata" src="./assets/truman/ep0-about-truman.mp4" poster="./assets/truman/portrait-03-front.png"></video>
+      <iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/fcaa989a4abc2bdf75eb5b238705fe43/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
       <div class="truman-pub-meta">
         <div class="truman-pub-row1"><span class="truman-pub-ep">EP.0</span><span class="truman-pub-tag">INTRO · 首發</span></div>
         <div class="truman-pub-title">關於王楚門</div>
@@ -4385,7 +4392,7 @@ body.vyve-active .g-punch{ color:#9a98a8; }
       </div>
     </div>
     <div class="truman-pub-card">
-      <video controls preload="metadata" src="./assets/truman/ep1-hospitality.mp4" poster="./assets/truman/portrait-01-headshot.png"></video>
+      <iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/7493c978fed7944b86d1b55e55525048/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
       <div class="truman-pub-meta">
         <div class="truman-pub-row1"><span class="truman-pub-ep">EP.1</span><span class="truman-pub-tag">已上線</span></div>
         <div class="truman-pub-title">款待</div>
@@ -4393,7 +4400,7 @@ body.vyve-active .g-punch{ color:#9a98a8; }
       </div>
     </div>
     <div class="truman-pub-card">
-      <video controls preload="metadata" src="./assets/truman/ep2-just-let-me-know.mp4" poster="./assets/truman/portrait-02-profile.png"></video>
+      <iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/a35eab24d9ae021cd9d3cd4284a32170/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
       <div class="truman-pub-meta">
         <div class="truman-pub-row1"><span class="truman-pub-ep">EP.2</span><span class="truman-pub-tag">已上線</span></div>
         <div class="truman-pub-title">有什麼需要儘管說</div>
