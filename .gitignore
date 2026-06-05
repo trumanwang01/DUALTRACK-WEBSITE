@@ -1,2 +1,5 @@
 ﻿index_backup_*.html
 .claude/
+
+# 影片改用外部托管(Cloudflare Stream / R2),不進 git
+*.mp4
