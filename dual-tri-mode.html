@@ -473,6 +473,21 @@ body.vyve-active .kb-side-foot .badge{ background:#1a1a22; color:#b8b5ae; border
   /* music-taste rows: stack label above text on phone */
   .kb-ws-vyve [style*="140px 1fr"]{ grid-template-columns:1fr !important; gap:4px !important; padding-left:16px !important; padding-right:16px !important; }
 }
+
+/* ── VYVE 角色細節 / 內容操作策略 ── */
+.vyve-story{ background:#121218; border:.5px solid #1e1e28; border-radius:12px; padding:22px 26px; margin-bottom:18px; }
+.vyve-story .vstory-badge{ display:inline-block; font-family:'DM Mono',monospace; font-size:9.5px; letter-spacing:.14em; color:#c8a0ff; background:rgba(124,77,255,.1); border:.5px solid rgba(124,77,255,.3); padding:4px 11px; border-radius:980px; margin-bottom:14px; }
+.vyve-story p{ font-size:.95rem; line-height:2; color:#c4c0b8; }
+.vyve-story p strong{ color:#f0ece4; font-weight:600; }
+.vyve-dcard{ background:#121218; border:.5px solid #1e1e28; border-radius:12px; padding:4px 0; margin-bottom:18px; }
+.vyve-drow{ display:grid; grid-template-columns:110px 1fr; gap:14px; padding:13px 22px; border-bottom:.5px solid #1e1e28; line-height:1.75; }
+.vyve-drow:last-child{ border-bottom:none; }
+.vyve-drow .dk{ font-family:'Noto Sans TC',sans-serif; font-weight:700; font-size:13px; color:#c8a0ff; padding-top:1px; }
+.vyve-drow .dv{ font-size:12.5px; color:#c8c4bc; }
+.vyve-drow .dv strong{ color:#f0ece4; font-weight:600; }
+@media (max-width:640px){ .vyve-drow{ grid-template-columns:1fr; gap:4px; } }
+.vyve-soon{ background:#121218; border:.5px dashed #2c2c38; border-radius:12px; padding:34px 26px; text-align:center; color:#68667a; line-height:1.8; margin-bottom:18px; }
+.vyve-soon b{ display:block; color:#c8a0ff; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.14em; margin-bottom:10px; }
 .kb-ws-vyve.active .kb-tri-card{ background:#121218; border-color:#1e1e28; }
 .kb-ws-vyve.active .kb-tri-name{ color:#f0ece4; }
 .kb-ws-vyve.active .kb-tri-desc{ color:#68667a; }
@@ -2716,6 +2731,57 @@ body.vyve-active .g-punch{ color:#9a98a8; }
     <div style="display:grid; grid-template-columns:100px 1fr; gap:14px; padding:14px 22px; line-height:1.7;"><span style="font-family:'Noto Sans TC',sans-serif; font-weight:700; font-size:13px; color:#e040fb;">世界觀</span><span style="font-size:12.5px; color:#c8c4bc;">世界比大多數人想的更有趣，只是要用對頻率。她不是樂觀或悲觀主義者——<b style="color:#f0ece4;">她相信調對頻率就能接收到好東西，而她的工作就是幫別人調頻。</b></span></div>
   </div>
 
+
+  <!-- ===== 角色細節 (整合自 VYVE IP 聖經) ===== -->
+  <div class="kb-ws-h" data-cat="chardetail"><span class="n">·</span><span class="lab">角色故事</span><span class="meta">Character Story · 500 words (EN)</span></div>
+  <div class="vyve-story">
+    <span class="vstory-badge">CHARACTER STORY · OpenArt 角色介紹用</span>
+    <p>No one knows where she came from. She just appears. 3AM convenience stores, empty streets after the night market closes, the last subway car with almost no one in it, rooftop parking lots where nobody goes. She brings her equipment, puts music into these spaces, and stands there — like she was always supposed to be there.<br><br>
+    Her name is VYVE. No last name, no backstory, no explanation. Grew up in Taiwan. 25. Everything else, she keeps to herself.<br><br>
+    She's a DJ, but she doesn't perform for anyone. She's a model, but she never walks toward the camera. She dances, but only when the music makes it impossible not to. She does all three — and none of it is for you.<br><br>
+    Small dark mole above her right ear. On her left inner wrist, a single thin line tattoo. She carries a transparent ziplock bag with something inside that's never quite visible. Her headphones are always around her neck. Never on her ears.<br><br>
+    She plays music on the streets of Taiwan, but her sound travels — Seoul, Tokyo, Berlin, found by people in the middle of their own late nights who don't know who she is but feel like the space was made for them.<br><br>
+    She won't answer your questions. She'll just keep showing up, keep playing music, keep standing at the edge of the warm light. You walk in. That part's up to you.</p>
+  </div>
+
+  <div class="kb-ws-h" data-cat="chardetail"><span class="n">·</span><span class="lab">家庭</span><span class="meta">Family</span></div>
+  <div class="vyve-dcard">
+    <div class="vyve-drow"><span class="dk">父親</span><span class="dv"><strong>王建銘，58 歲，台南人。</strong>年輕時學爵士吉他，後來做了建材生意。從不問 VYVE 做的事能不能賺錢，只問她有沒有認真。書架上放著 Miles Davis 和 Bill Evans 的黑膠。VYVE 第一次聽到 Chet Baker 是在他的車上。</span></div>
+    <div class="vyve-drow"><span class="dk">母親</span><span class="dv"><strong>陳淑芬，55 歲，客家人。</strong>在台北開很小的花藝工作室。不說「我愛你」但會在你回台北前把冰箱塞滿。不完全理解 VYVE 在做什麼，但在第一支 YouTube 影片上線那天按了訂閱，然後什麼都沒說。</span></div>
+    <div class="vyve-drow"><span class="dk">家庭氛圍</span><span class="dv">不富裕也不困難。父母從不要求她走哪條路，也沒明確說「你可以做任何事」——只是沉默地讓她做。父親把舊耳機給她說「聽音樂要用好的設備」，這是他給的最好的教育。</span></div>
+    <div class="vyve-drow"><span class="dk">味覺記憶</span><span class="dv">每次回台南都去吃媽媽煮的薑絲炒大腸。這是她唯一一道覺得「在外面找不到一樣味道」的食物。</span></div>
+  </div>
+
+  <div class="kb-ws-h" data-cat="chardetail"><span class="n">·</span><span class="lab">CUXI · 寵物</span><span class="meta">3 歲薩摩耶 · 母 · 領養</span></div>
+  <div class="vyve-dcard">
+    <div class="vyve-drow"><span class="dk">來歷</span><span class="dv">兩年前從台北中途之家領養。被前任飼主遺棄的原因是「太安靜、不活潑」——前任覺得她不像薩摩耶該有的樣子。VYVE 看到認養資訊就決定了，原因沒有解釋過。</span></div>
+    <div class="vyve-drow"><span class="dk">個性</span><span class="dv">不會主動跳起來迎接人，但會找到 VYVE 在的房間，在她腳邊躺下。不需要一直被摸，只需要知道你在。VYVE 說過「我們是同一種動物」，沒有繼續說下去。</span></div>
+    <div class="vyve-drow"><span class="dk">社群意義</span><span class="dv">粉絲社群不成文的規定：<strong>看到 CUXI 出現就代表今天 VYVE 在家，狀態還不錯。</strong>CUXI 幾乎每次都只是睡著的背影或白色毛髮出現在畫面邊緣，從來不是主角。</span></div>
+    <div class="vyve-drow"><span class="dk">生日彩蛋</span><span class="dv">每年 5 月 11 日 VYVE 的限時動態只有一張照片——CUXI 趴在某個地方睡覺，沒有文字。粉絲慢慢發現這是她生日的信號。</span></div>
+    <div class="vyve-drow"><span class="dk">最愛</span><span class="dv">曬太陽、吃冰塊、聞 VYVE 的耳機。</span></div>
+  </div>
+
+  <div class="kb-ws-h" data-cat="chardetail"><span class="n">·</span><span class="lab">飲食</span><span class="meta">Food · 偏好與禁忌</span></div>
+  <div class="vyve-dcard">
+    <div class="vyve-drow"><span class="dk">最愛</span><span class="dv"><strong>麻辣火鍋、日本壽司、豬排飯、咖哩。</strong>麻辣火鍋是她唯一會主動約朋友出去吃的食物。</span></div>
+    <div class="vyve-drow"><span class="dk">壽司</span><span class="dv">有固定去的一家，只有 12 個位置。老闆認識她但他們不聊天，只說「今天有什麼好的」然後老闆決定。</span></div>
+    <div class="vyve-drow"><span class="dk">咖哩</span><span class="dv">懶得出門時會自己煮的唯一料理。</span></div>
+    <div class="vyve-drow"><span class="dk">絕對不吃</span><span class="dv"><strong>勾芡類食物。</strong>不是過敏，是質地讓她不舒服。羹湯、濃稠醬汁、勾芡炒菜，全部不行。禁忌是絕對的。</span></div>
+    <div class="vyve-drow"><span class="dk">吃飯方式</span><span class="dv">吃東西很慢，不是在品嘗，是在想事情。跟她吃飯的人說她看起來像把吃飯當成需要處理的任務。但面前是麻辣火鍋，她會比任何人先吃完。</span></div>
+  </div>
+
+  <div class="kb-ws-h" data-cat="chardetail"><span class="n">·</span><span class="lab">運動</span><span class="meta">Sport</span></div>
+  <div class="vyve-dcard">
+    <div class="vyve-drow"><span class="dk">現況</span><span class="dv">幾乎不運動。偶爾走路去便利商店是最主要的戶外活動。CUXI 讓她出門散步，這是最規律的運動形式。</span></div>
+    <div class="vyve-drow"><span class="dk">最想學</span><span class="dv"><strong>拳擊。</strong>提過一次，沒有下文。理由：「它是一對一的，沒有人可以幫你，所有事情都在你身上。」</span></div>
+  </div>
+
+  <!-- ===== 內容操作策略 (待整合) ===== -->
+  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">內容操作策略</span><span class="meta">Content Ops · 社群策略 / 內容日曆</span></div>
+  <div class="vyve-soon">
+    <b>CONTENT OPS · 整理中</b>
+    社群操作策略與第一個月內容日曆即將整合進此分頁——核心原則、視覺系統、內容矩陣、發文節奏、冷啟動、Caption 庫、空間場景庫。
+  </div>
 
 </div>
 
@@ -5273,11 +5339,13 @@ document.querySelectorAll('[data-action="goto-album"]').forEach(btn=>{
   if(!panel || !host) return;
 
   const CATS = [
-    {id:'identity',   zh:'定位', en:'IDENTITY'},
-    {id:'visual',     zh:'視覺', en:'VISUAL'},
-    {id:'music',      zh:'音樂', en:'MUSIC'},
-    {id:'production', zh:'製作', en:'PRODUCTION'},
-    {id:'strategy',   zh:'營運', en:'STRATEGY'}
+    {id:'identity',    zh:'定位', en:'IDENTITY'},
+    {id:'chardetail',  zh:'角色細節', en:'DETAILS'},
+    {id:'visual',      zh:'視覺', en:'VISUAL'},
+    {id:'music',       zh:'音樂', en:'MUSIC'},
+    {id:'production',  zh:'製作', en:'PRODUCTION'},
+    {id:'strategy',    zh:'營運', en:'STRATEGY'},
+    {id:'contentstrat',zh:'內容操作策略', en:'CONTENT OPS'}
   ];
   function catOf(t){
     if(/核心定位|三重身份|三身|價值觀|絕對底線|情境對照|關係觀|地理歸屬/.test(t)) return 'identity';
@@ -5292,7 +5360,7 @@ document.querySelectorAll('[data-action="goto-album"]').forEach(btn=>{
   const headers = [...panel.querySelectorAll('.kb-ws-h')];
   const sections = headers.map(h=>{
     const lab = h.querySelector('.lab');
-    const cat = catOf(lab ? lab.textContent.trim() : '');
+    const cat = h.dataset.cat || catOf(lab ? lab.textContent.trim() : '');
     const els = [h]; let n = h.nextElementSibling;
     while(n && !n.classList.contains('kb-ws-h')){ els.push(n); n = n.nextElementSibling; }
     return { cat, els };
