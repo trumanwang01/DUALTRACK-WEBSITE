@@ -483,7 +483,7 @@ footer {
   .modules-wrap{ padding:48px 28px 100px; }
   .flow-section,.terminal-section,.eco-section{ padding-left:32px; padding-right:32px; }
   .eco-grid{ grid-template-columns:repeat(2,1fr); }
-  .eco-grid-bottom{ grid-template-columns:repeat(2,1fr); }
+  .eco-grid .eco-card:nth-child(3){ grid-column:1 / -1; }   /* lone 3rd card spans full width */
   .mod{ grid-template-columns:220px 1fr; }
   .mod-l{ padding:40px 28px; }
   .mod-r{ padding:40px 32px; }
@@ -528,8 +528,11 @@ footer {
   .eco-section{ padding:80px 20px; }
   .eco-header{ margin-bottom:48px; }
   .eco-grid,.eco-grid-bottom{ grid-template-columns:1fr; }
-  .eco-card,.eco-bottom-card{ padding:36px 26px; }
-  .eco-statement{ padding:48px 24px; margin-top:48px; }
+  .eco-grid .eco-card:nth-child(3){ grid-column:auto; }      /* reset tablet span on phone */
+  .eco-grid{ border-radius:18px 18px 0 0; margin-bottom:2px; } /* round top only */
+  .eco-grid-bottom{ border-radius:0 0 18px 18px; }            /* round bottom only → seamless join */
+  .eco-card,.eco-bottom-card{ padding:34px 24px; }
+  .eco-statement{ padding:44px 22px; margin-top:48px; }
 
   .cta-section{ padding:100px 20px; }
   .cta-btns{ flex-wrap:wrap; }
