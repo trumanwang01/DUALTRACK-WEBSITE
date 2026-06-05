@@ -1035,6 +1035,11 @@ body.vyve-active .kb-shell.nav-collapsed .kb-nav-divider{ border-top-color:#1e1e
 .kb-nav-group.collapsed .kb-nav-list{ max-height:0; opacity:0; }
 .kb-shell.nav-collapsed .kb-nav-divider{ cursor:default; pointer-events:none; }
 .kb-shell.nav-collapsed .nav-div-chevron{ display:none; }
+/* clear section icons */
+.nav-div-icon{ display:inline-flex; align-items:center; justify-content:center; width:17px; height:17px; }
+.nav-div-icon svg{ width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+/* in the 64px rail, ignore per-group collapse so item icons still show */
+.kb-shell.nav-collapsed .kb-nav-group.collapsed .kb-nav-list{ max-height:600px; opacity:1; }
 
 /* ============================================================
    V4: MODAL / DETAIL OVERLAY SYSTEM
@@ -1922,23 +1927,23 @@ body.vyve-active .g-punch{ color:#9a98a8; }
 <div id="view-kb">
 <div class="kb-shell">
   <aside class="kb-sidebar">
-    <div class="kb-nav-group">
-      <span class="kb-nav-divider"><span class="nav-div-icon">⌂</span><span class="nav-div-text">Home</span><span class="nav-div-chevron">▼</span></span>
+    <div class="kb-nav-group collapsed">
+      <span class="kb-nav-divider"><span class="nav-div-icon"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg></span><span class="nav-div-text">Home · 首頁</span><span class="nav-div-chevron">▼</span></span>
       <ul class="kb-nav-list">
         <li class="kb-nav-item" data-ws="home" data-tip="Dashboard"><span class="kb-nav-ico">⌂</span><span class="kb-nav-lab">Dashboard</span></li>
       </ul>
     </div>
 
-    <div class="kb-nav-group">
-      <span class="kb-nav-divider"><span class="nav-div-icon">◈</span><span class="nav-div-text">IP Workspaces</span><span class="nav-div-chevron">▼</span></span>
+    <div class="kb-nav-group collapsed">
+      <span class="kb-nav-divider"><span class="nav-div-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17.5" cy="9" r="2.3"/><path d="M16.5 14.2a4.3 4.3 0 0 1 4.3 4.3"/></svg></span><span class="nav-div-text">IP Workspaces · 藝人</span><span class="nav-div-chevron">▼</span></span>
       <ul class="kb-nav-list">
         <li class="kb-nav-item kb-nav-ip active" data-ws="vyve" data-tip="VYVE"><span class="kb-nav-ico">◈</span><span class="kb-nav-lab">VYVE</span><span class="kb-nav-status">● M1</span></li>
         <li class="kb-nav-item kb-nav-ip" data-ws="truman" data-tip="王楚門"><span class="kb-nav-ico">◉</span><span class="kb-nav-lab">王楚門 TRUMAN</span><span class="kb-nav-status">● 上線</span></li>
       </ul>
     </div>
 
-    <div class="kb-nav-group">
-      <span class="kb-nav-divider"><span class="nav-div-icon">◆</span><span class="nav-div-text">Business</span><span class="nav-div-chevron">▼</span></span>
+    <div class="kb-nav-group collapsed">
+      <span class="kb-nav-divider"><span class="nav-div-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7.5" width="18" height="12.5" rx="2"/><path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></svg></span><span class="nav-div-text">Business · 業務</span><span class="nav-div-chevron">▼</span></span>
       <ul class="kb-nav-list">
         <li class="kb-nav-item" data-ws="business" data-tip="業務總覽"><span class="kb-nav-ico">◆</span><span class="kb-nav-lab">業務總覽</span></li>
         <li class="kb-nav-item" data-ws="business-projects" data-tip="專案管理"><span class="kb-nav-ico">▦</span><span class="kb-nav-lab">專案管理</span></li>
@@ -1952,8 +1957,8 @@ body.vyve-active .g-punch{ color:#9a98a8; }
       </ul>
     </div>
 
-    <div class="kb-nav-group">
-      <span class="kb-nav-divider"><span class="nav-div-icon">▤</span><span class="nav-div-text">Company</span><span class="nav-div-chevron">▼</span></span>
+    <div class="kb-nav-group collapsed">
+      <span class="kb-nav-divider"><span class="nav-div-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></svg></span><span class="nav-div-text">Company · 公司</span><span class="nav-div-chevron">▼</span></span>
       <ul class="kb-nav-list">
         <li class="kb-nav-item" data-ws="company" data-tip="公司簡介"><span class="kb-nav-ico">▤</span><span class="kb-nav-lab">公司簡介</span></li>
         <li class="kb-nav-item" data-ws="company" data-anchor="02"><span class="kb-nav-ico" style="opacity:.4;">·</span><span class="kb-nav-lab">品牌三角</span></li>
@@ -1965,8 +1970,8 @@ body.vyve-active .g-punch{ color:#9a98a8; }
       </ul>
     </div>
 
-    <div class="kb-nav-group">
-      <span class="kb-nav-divider"><span class="nav-div-icon">⌬</span><span class="nav-div-text">Reference</span><span class="nav-div-chevron">▼</span></span>
+    <div class="kb-nav-group collapsed">
+      <span class="kb-nav-divider"><span class="nav-div-icon"><svg viewBox="0 0 24 24"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19"/></svg></span><span class="nav-div-text">Reference · 知識庫</span><span class="nav-div-chevron">▼</span></span>
       <ul class="kb-nav-list">
         <li class="kb-nav-item" data-ws="reference" data-tip="DUAL OS 文件"><span class="kb-nav-ico">⌬</span><span class="kb-nav-lab">DUAL OS 文件</span></li>
         <li class="kb-nav-item" data-ws="reference" data-anchor="02"><span class="kb-nav-ico" style="opacity:.4;">·</span><span class="kb-nav-lab">五技能模組</span></li>
@@ -1979,8 +1984,8 @@ body.vyve-active .g-punch{ color:#9a98a8; }
       </ul>
     </div>
 
-    <div class="kb-nav-group">
-      <span class="kb-nav-divider"><span class="nav-div-icon">◷</span><span class="nav-div-text">Academy</span><span class="nav-div-chevron">▼</span></span>
+    <div class="kb-nav-group collapsed">
+      <span class="kb-nav-divider"><span class="nav-div-icon"><svg viewBox="0 0 24 24"><path d="M12 4 2 9l10 5 10-5z"/><path d="M6 11.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4.5"/></svg></span><span class="nav-div-text">Academy · 學院</span><span class="nav-div-chevron">▼</span></span>
       <ul class="kb-nav-list">
         <li class="kb-nav-item" data-ws="academy" data-tip="學院總覽"><span class="kb-nav-ico">◷</span><span class="kb-nav-lab">學院總覽</span></li>
         <li class="kb-nav-item" data-ws="academy-agency" data-tip="品牌經紀學院"><span class="kb-nav-ico" style="opacity:.4;">·</span><span class="kb-nav-lab">品牌經紀學院</span></li>
@@ -6198,7 +6203,8 @@ document.querySelectorAll('[data-action="goto-release"]').forEach(btn=>{
     el.addEventListener('click', function(){ setTimeout(onHome, 40); });
   });
   setHello(); renderGossip();
-  if(document.querySelector('.kb-panel[data-workspace="home"].active')) playBoot();
+  // Always play the welcome animation on page load (covers entering from any other page)
+  playBoot();
 })();
 </script>
 </body>
