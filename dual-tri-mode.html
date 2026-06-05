@@ -448,6 +448,31 @@ body.vyve-active .kb-side-foot .badge{ background:#1a1a22; color:#b8b5ae; border
 .vyve-tab.active{ color:#fff; background:linear-gradient(92deg,#7c4dff,#db2777); border-color:transparent; }
 @media (max-width:880px){ .vyve-tabs{ overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; padding-bottom:8px; } }
 .vyve-cat-hidden{ display:none !important; }
+
+/* ── VYVE mobile optimization ── */
+@media (max-width:880px){
+  .kb-ws-vyve .ws-grid-2{ grid-template-columns:1fr; }
+}
+@media (max-width:640px){
+  .kb-ws-vyve .kb-hero-img{ aspect-ratio:16/11; max-height:280px; }
+  .kb-ws-vyve .kb-hero-name{ font-size:clamp(1.7rem,8.5vw,2.4rem); }
+  .kb-ws-vyve .kb-hero-tagline{ font-size:.96rem; }
+  .vyve-core{ padding-left:20px; }
+  .vyve-core::before{ width:2px; }
+  .vyve-core .kb-ident-q{ font-size:1.02rem; line-height:1.85; }
+  .vyve-core-grid{ grid-template-columns:1fr 1fr; gap:8px; }
+  .vyve-core-grid .kb-ident-row{ padding:12px 13px; }
+  .vyve-tabs{ margin:8px 0 22px; }
+  .vyve-tab{ padding:8px 15px; font-size:12.5px; }
+  .kb-vibe{ padding:18px 15px; }
+  .kb-vibe-row{ grid-template-columns:80px 1fr 40px; gap:10px; }
+  .kb-vibe-name{ font-size:12px; }
+  .kb-album{ padding:20px 16px; }
+  .kb-album-title{ font-size:2rem; }
+  .kb-album-concept{ font-size:.88rem; padding:12px 14px; }
+  /* music-taste rows: stack label above text on phone */
+  .kb-ws-vyve [style*="140px 1fr"]{ grid-template-columns:1fr !important; gap:4px !important; padding-left:16px !important; padding-right:16px !important; }
+}
 .kb-ws-vyve.active .kb-tri-card{ background:#121218; border-color:#1e1e28; }
 .kb-ws-vyve.active .kb-tri-name{ color:#f0ece4; }
 .kb-ws-vyve.active .kb-tri-desc{ color:#68667a; }
@@ -544,7 +569,9 @@ body.vyve-active .kb-side-foot .badge{ background:#1a1a22; color:#b8b5ae; border
 .kb-album-label{ font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.16em; color:#7c4dff; text-transform:uppercase; }
 .kb-album-tag{ font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.1em; color:#737373; padding:3px 8px; border:.5px solid #2a2a2a; border-radius:980px; }
 .kb-album-artist{ font-family:'Noto Sans TC',sans-serif; font-weight:700; font-size:.95rem; color:#a8a59f; letter-spacing:.04em; margin-bottom:6px; text-transform:uppercase; }
-.kb-album-title{ font-family:'Noto Sans TC',sans-serif; font-weight:900; font-size:2.4rem; letter-spacing:-.02em; color:#f0ede6; line-height:1; margin-bottom:24px; }
+.kb-album-title{ font-family:'Noto Sans TC',sans-serif; font-weight:900; font-size:2.4rem; letter-spacing:-.02em; color:#f0ede6; line-height:1; margin-bottom:20px; }
+.kb-album-concept{ font-family:'Noto Serif TC',serif; font-size:.92rem; line-height:1.9; color:#b4b0a8; margin:0 0 22px; padding:14px 18px; background:rgba(124,77,255,.07); border-left:2px solid #7c4dff; border-radius:0 8px 8px 0; }
+.kb-album-concept b{ display:block; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.16em; color:#c8a0ff; margin-bottom:8px; text-transform:uppercase; }
 .kb-tracks{ display:flex; flex-direction:column; gap:12px; }
 .kb-track{ padding:16px 18px; background:#161616; border:.5px solid #2a2a2a; border-radius:4px; }
 .kb-track-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:10px; }
@@ -2079,11 +2106,8 @@ body.vyve-active .g-punch{ color:#9a98a8; }
     </div>
   </div>
 
-  <div class="kb-ws-actions">
-    <button class="kb-ws-action" data-action="copy-openart">⌘ 複製 OpenArt prompt</button>
-    <button class="kb-ws-action" data-action="check-visual">✓ 視覺一致性檢查</button>
-    <button class="kb-ws-action" data-action="goto-album">▶ SIGNAL 專輯</button>
-  </div>
+  <!-- VYVE 分類頁籤 -->
+  <div class="vyve-tabs" id="vyveTabs"></div>
 
   <!-- HERO -->
   <div class="kb-hero">
@@ -2114,8 +2138,11 @@ body.vyve-active .g-punch{ color:#9a98a8; }
     </div>
   </div>
 
-  <!-- VYVE 分類頁籤 -->
-  <div class="vyve-tabs" id="vyveTabs"></div>
+  <div class="kb-ws-actions">
+    <button class="kb-ws-action" data-action="copy-openart">⌘ 複製 OpenArt prompt</button>
+    <button class="kb-ws-action" data-action="check-visual">✓ 視覺一致性檢查</button>
+    <button class="kb-ws-action" data-action="goto-album">▶ SIGNAL 專輯</button>
+  </div>
 
   <!-- 1. 核心定位 -->
   <div class="kb-ws-h"><span class="n">01</span><span class="lab">核心定位</span><span class="meta">Character Core</span></div>
@@ -2124,7 +2151,7 @@ body.vyve-active .g-punch{ color:#9a98a8; }
     <p class="kb-ident-q">VYVE 是 DUAL Entertainment 旗下的虛擬 DJ／Model／Dancer，2026 年出道於台灣。她以 Techno 為核心音樂語言，定位於台北、東京、首爾的地下音樂場景，觸及對音樂、空間與視覺有高度偏執的 18–35 歲都會受眾。作為 AI 原生虛擬 IP，她不受語言、時區與物理限制，可同步觸達全球市場——從亞洲地下電音圈到歐美 Techno 文化場景，內容無需在地化即具備跨文化共鳴。她的商業價值建立在長期 IP 資產的可授權性與可延展性——從 YouTube 陪伴音樂頻道到空間品牌合作、音樂版權授權，VYVE 是一個不依賴真人限制、可持續跨市場生長的文化 IP。</p>
     <div class="kb-ident-meta vyve-core-grid">
       <div class="kb-ident-row"><span class="k">名字</span><span class="v">VYVE WANG · /vaɪv/</span></div>
-      <div class="kb-ident-row"><span class="k">國籍</span><span class="v">台灣 · 新北長大</span></div>
+      <div class="kb-ident-row"><span class="k">國籍</span><span class="v">台灣 · 東京長大</span></div>
       <div class="kb-ident-row"><span class="k">星座</span><span class="v">金牛 · 5/11</span></div>
       <div class="kb-ident-row"><span class="k">血型</span><span class="v">AB</span></div>
       <div class="kb-ident-row"><span class="k">MBTI</span><span class="v">ISTP · 行動派內向</span></div>
@@ -2143,6 +2170,7 @@ body.vyve-active .g-punch{ color:#9a98a8; }
       </div>
       <div class="kb-album-artist">VYVE WANG</div>
       <h3 class="kb-album-title">SIGNAL</h3>
+      <p class="kb-album-concept"><b>專輯概念 · Album Concept</b>SIGNAL 不只是 VYVE 的出道作品，它是她存在方式的第一次完整聲明。VYVE 的核心哲學是「頻率對了，解釋就是多餘的」——她不對所有人說話，只對調對頻率的人發出訊號。SIGNAL 就是這個哲學的音樂形式：一張關於「訊號如何被發出、如何傳遞、如何在混亂中失真、又如何走向終止」的 EP。專輯名稱本身就是她的自我介紹。</p>
       <div class="kb-tracks">
         <div class="kb-track">
           <div class="kb-track-head">
@@ -2196,9 +2224,9 @@ body.vyve-active .g-punch{ color:#9a98a8; }
   </div>
 
   <!-- VIDEO: Raw drafts -->
-  <div class="kb-ws-h"><span class="n">·</span><span class="lab">草稿素材</span><span class="meta">4 支 · OpenArt + Gemini raw</span></div>
+  <div class="kb-ws-h"><span class="n">·</span><span class="lab">生活影片</span><span class="meta">4 支 · OpenArt + Gemini</span></div>
   <div class="kb-vidgrid">
-    <div class="kb-vid is-portrait"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/c111179f35f6e3d147b862d32262c5a2/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">OPENART · 01</span><span class="kb-vid-tag">草稿</span></div></div>
+    <div class="kb-vid is-portrait"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/c111179f35f6e3d147b862d32262c5a2/iframe?muted=true" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">OPENART · 01</span><span class="kb-vid-tag">草稿</span></div></div>
     <div class="kb-vid is-portrait"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/c42b5e30f5c854319b2b80504900ba61/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">OPENART · 02</span><span class="kb-vid-tag">草稿</span></div></div>
     <div class="kb-vid is-portrait"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/84b139519577aa4869d558bc061b5b6b/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">OPENART · 03</span><span class="kb-vid-tag">草稿</span></div></div>
     <div class="kb-vid is-portrait"><iframe src="https://customer-nx6fwh4kjcj08zpd.cloudflarestream.com/76b6593c755973fab04ed2684ee14a90/iframe" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe><div class="kb-vid-meta"><span class="kb-vid-no">AI GEN · 01</span><span class="kb-vid-tag">Gemini</span></div></div>
@@ -2256,17 +2284,6 @@ body.vyve-active .g-punch{ color:#9a98a8; }
   </div>
 
   <!-- 5. 頻率光譜 -->
-  <div class="kb-ws-h"><span class="n">04</span><span class="lab">頻率光譜</span><span class="meta">7 Vibes</span></div>
-  <div class="kb-vibe">
-    <div class="kb-vibe-row"><span class="kb-vibe-name">Techno</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:90%"></div></div><span class="kb-vibe-val">90%</span></div>
-    <div class="kb-vibe-row"><span class="kb-vibe-name">Hip-Hop</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:85%"></div></div><span class="kb-vibe-val">85%</span></div>
-    <div class="kb-vibe-row"><span class="kb-vibe-name">Ambient</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:80%"></div></div><span class="kb-vibe-val">80%</span></div>
-    <div class="kb-vibe-row"><span class="kb-vibe-name">House</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:75%"></div></div><span class="kb-vibe-val">75%</span></div>
-    <div class="kb-vibe-row"><span class="kb-vibe-name">Jazz-Hop</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:65%"></div></div><span class="kb-vibe-val">65%</span></div>
-    <div class="kb-vibe-row"><span class="kb-vibe-name">City Pop</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:60%"></div></div><span class="kb-vibe-val">60%</span></div>
-    <div class="kb-vibe-row"><span class="kb-vibe-name">Experimental</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:50%"></div></div><span class="kb-vibe-val">50%</span></div>
-  </div>
-
   <!-- 6. 場景庫 -->
   <div class="kb-ws-h"><span class="n">05</span><span class="lab">場景庫 · 前 6 集</span><span class="meta">點擊展開細節</span></div>
   <div class="kb-scene-list">
@@ -2663,6 +2680,18 @@ body.vyve-active .g-punch{ color:#9a98a8; }
     <div style="display:grid; grid-template-columns:140px 1fr; gap:14px; padding:14px 22px; border-bottom:.5px solid #1e1e28; line-height:1.7;"><span style="font-family:'Noto Sans TC',sans-serif; font-weight:700; font-size:13px; color:#c8a0ff;">Daft Punk</span><span style="font-size:12.5px; color:#c8c4bc;">父親書架上有一張《Discovery》黑膠，高中時偷偷拿來聽，還回去沒有說。<b style="color:#f0ece4;">這是她開始認真對待電子音樂的起點。</b></span></div>
     <div style="display:grid; grid-template-columns:140px 1fr; gap:14px; padding:14px 22px; border-bottom:.5px solid #1e1e28; line-height:1.7;"><span style="font-family:'Noto Sans TC',sans-serif; font-weight:700; font-size:13px; color:#c8a0ff;">Yussef Dayes</span><span style="font-size:12.5px; color:#c8c4bc;">讓她覺得節奏是有重量的，不是在數拍子，是在感受拍子落地的力道。</span></div>
     <div style="display:grid; grid-template-columns:140px 1fr; gap:14px; padding:14px 22px; line-height:1.7;"><span style="font-family:'Noto Sans TC',sans-serif; font-weight:700; font-size:13px; color:#c8a0ff;">最欣賞 DJ</span><span style="font-size:12.5px; color:#c8c4bc;"><b style="color:#f0ece4;">Kaytranada。</b>理由只有一句：「他讓跳舞這件事變得很有尊嚴。」</span></div>
+  </div>
+
+  <!-- 頻率光譜 -->
+  <div class="kb-ws-h"><span class="n">·</span><span class="lab">頻率光譜</span><span class="meta">7 Vibes</span></div>
+  <div class="kb-vibe">
+    <div class="kb-vibe-row"><span class="kb-vibe-name">Techno</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:90%"></div></div><span class="kb-vibe-val">90%</span></div>
+    <div class="kb-vibe-row"><span class="kb-vibe-name">Hip-Hop</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:85%"></div></div><span class="kb-vibe-val">85%</span></div>
+    <div class="kb-vibe-row"><span class="kb-vibe-name">Ambient</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:80%"></div></div><span class="kb-vibe-val">80%</span></div>
+    <div class="kb-vibe-row"><span class="kb-vibe-name">House</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:75%"></div></div><span class="kb-vibe-val">75%</span></div>
+    <div class="kb-vibe-row"><span class="kb-vibe-name">Jazz-Hop</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:65%"></div></div><span class="kb-vibe-val">65%</span></div>
+    <div class="kb-vibe-row"><span class="kb-vibe-name">City Pop</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:60%"></div></div><span class="kb-vibe-val">60%</span></div>
+    <div class="kb-vibe-row"><span class="kb-vibe-name">Experimental</span><div class="kb-vibe-track"><div class="kb-vibe-fill" style="width:50%"></div></div><span class="kb-vibe-val">50%</span></div>
   </div>
 
   <!-- 地理歸屬 -->
@@ -5253,7 +5282,7 @@ document.querySelectorAll('[data-action="goto-album"]').forEach(btn=>{
   function catOf(t){
     if(/核心定位|三重身份|三身|價值觀|絕對底線|情境對照|關係觀|地理歸屬/.test(t)) return 'identity';
     if(/SIGNAL|出道專輯|頻率光譜|音樂品味/.test(t)) return 'music';
-    if(/角色參考|人像|Showcase|草稿|視覺一致|標誌性|色調|穿搭/.test(t)) return 'visual';
+    if(/角色參考|人像|Showcase|生活影片|草稿|視覺一致|標誌性|色調|穿搭/.test(t)) return 'visual';
     if(/場景庫|Prompt|工具設定|工具棧/.test(t)) return 'production';
     if(/平台分工|時間軸|變現/.test(t)) return 'strategy';
     return 'identity';
