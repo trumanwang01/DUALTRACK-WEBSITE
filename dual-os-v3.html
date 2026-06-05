@@ -477,15 +477,79 @@ footer {
 .sr.vis { opacity:1; transform:translateY(0); }
 .sr-d1{transition-delay:0.1s;} .sr-d2{transition-delay:0.2s;} .sr-d3{transition-delay:0.3s;}
 
+/* ── Tablet (≤ 1024px) ── */
+@media(max-width:1024px){
+  .stats-wrap{ padding:0 32px 100px; }
+  .modules-wrap{ padding:48px 28px 100px; }
+  .flow-section,.terminal-section,.eco-section{ padding-left:32px; padding-right:32px; }
+  .eco-grid{ grid-template-columns:repeat(2,1fr); }
+  .eco-grid-bottom{ grid-template-columns:repeat(2,1fr); }
+  .mod{ grid-template-columns:220px 1fr; }
+  .mod-l{ padding:40px 28px; }
+  .mod-r{ padding:40px 32px; }
+}
+
+/* ── Mobile (≤ 768px) ── */
 @media(max-width:768px){
-  nav{padding:0 24px;} .nav-links{display:none;}
-  .stats-row{grid-template-columns:1fr;}
-  .mod{grid-template-columns:1fr;}
-  .mod-l{border-right:none;border-bottom:0.5px solid var(--border);}
-  .term-grid{grid-template-columns:1fr;}
-  .flow-track{flex-direction:column;}
-  .flow-step{border-right:none;border-bottom:0.5px solid var(--border);}
-  footer{flex-direction:column;gap:12px;text-align:center;}
+  nav{ padding:0 20px; }
+  .nav-links{ gap:0; }
+  .nav-links li:not(:first-child){ display:none; }   /* keep ← DUAL TRACK, hide in-page anchors */
+  .nav-cta{ padding:8px 16px; font-size:12px; }
+
+  .hero{ padding:116px 20px 80px; }
+  .hero-btns{ flex-wrap:wrap; }
+  .hero-scroll{ display:none; }
+
+  .problem-section{ padding:100px 20px 80px; }
+
+  .stats-wrap{ padding:0 20px 80px; }
+  .stats-row{ grid-template-columns:1fr; }
+  .stat-box{ padding:40px 28px; }
+  .stat-n{ font-size:56px; }
+
+  .intro-section{ padding:72px 20px 56px; }
+
+  .modules-wrap{ padding:40px 20px 80px; }
+  .mod{ grid-template-columns:1fr; }
+  .mod-l{ border-right:none; border-bottom:0.5px solid var(--border); padding:36px 24px; }
+  .mod-r{ padding:32px 24px; }
+  .mod-title,.memory-word{ font-size:26px; }
+  .mod-desc{ font-size:15px; }
+
+  .flow-section{ padding:80px 20px; }
+  .flow-track{ flex-direction:column; }
+  .flow-step{ border-right:none; border-bottom:0.5px solid var(--border); }
+  .flow-step:last-child{ border-bottom:none; }
+
+  .terminal-section{ padding:48px 20px 80px; }
+  .term-grid{ grid-template-columns:1fr; gap:36px; }
+
+  .mod-header{ padding:64px 20px 32px; }
+  .eco-section{ padding:80px 20px; }
+  .eco-header{ margin-bottom:48px; }
+  .eco-grid,.eco-grid-bottom{ grid-template-columns:1fr; }
+  .eco-card,.eco-bottom-card{ padding:36px 26px; }
+  .eco-statement{ padding:48px 24px; margin-top:48px; }
+
+  .cta-section{ padding:100px 20px; }
+  .cta-btns{ flex-wrap:wrap; }
+
+  footer{ flex-direction:column; gap:12px; text-align:center; padding:32px 20px; }
+
+  .mbti-egg{ display:none; }
+}
+
+/* ── Small phones (≤ 400px) ── */
+@media(max-width:400px){
+  .hero-btns,.cta-btns{ width:100%; }
+  .btn-p,.btn-g{ width:100%; text-align:center; padding:15px 24px; }
+}
+
+/* ── Touch devices: restore real cursor, drop custom cursor ── */
+@media (hover:none) and (pointer:coarse){
+  body{ cursor:auto; }
+  .cursor-dot,.cursor-ring,.cursor-label{ display:none !important; }
+  a,button,.btn-p,.btn-g,.mod-pill,.nav-cta,.flow-step,.ti,.eco-card,.stat-box{ cursor:pointer; }
 }
 
 /* ECOSYSTEM */
