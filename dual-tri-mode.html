@@ -29,7 +29,26 @@ body.mode-kb ::selection{ background:#1d4ed8; color:#fff; }
 .kb-shell{ display:grid; grid-template-columns:240px 1fr; min-height:100vh; padding-top:60px; }
 @media (max-width:880px){ .kb-shell{ grid-template-columns:1fr; } }
 .kb-sidebar{ background:#fff; border-right:1px solid #e5e3dd; padding:24px 16px; position:sticky; top:60px; height:calc(100vh - 60px); overflow-y:auto; }
-@media (max-width:880px){ .kb-sidebar{ position:relative; top:0; height:auto; overflow-y:visible; border-right:none; border-bottom:1px solid #e5e3dd; padding:12px; } }
+@media (max-width:880px){
+  /* Off-canvas drawer: always reachable via the fixed top-nav hamburger */
+  .kb-sidebar{
+    position:fixed; top:60px; left:0; bottom:0; z-index:300;
+    width:82%; max-width:300px; height:auto;
+    overflow-y:auto; -webkit-overflow-scrolling:touch;
+    border-right:1px solid #e5e3dd; border-bottom:none;
+    padding:18px 12px 40px;
+    transform:translateX(-100%);
+    transition:transform .28s cubic-bezier(.4,0,.2,1);
+    box-shadow:6px 0 26px rgba(0,0,0,0.14);
+  }
+  .kb-shell.sidebar-open .kb-sidebar{ transform:translateX(0); }
+}
+/* Drawer backdrop */
+.kb-drawer-backdrop{ display:none; }
+@media (max-width:880px){
+  .kb-drawer-backdrop{ display:block; position:fixed; inset:60px 0 0 0; z-index:290; background:rgba(0,0,0,0); visibility:hidden; transition:background .28s, visibility .28s; }
+  .kb-shell.sidebar-open .kb-drawer-backdrop{ background:rgba(0,0,0,0.42); visibility:visible; }
+}
 .kb-side-head{ font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:#737373; padding:8px 12px 14px; }
 .kb-nav{ list-style:none; padding:0; display:flex; flex-direction:column; gap:2px; }
 @media (max-width:880px){ .kb-nav{ flex-direction:row; overflow-x:auto; padding-bottom:8px; gap:6px; } }
@@ -1995,6 +2014,7 @@ body.vyve-active .g-punch{ color:#9a98a8; }
     </div>
 
   </aside>
+  <div class="kb-drawer-backdrop" id="kbDrawerBackdrop"></div>
 
 <main class="kb-main">
 <!-- ============ VYVE WORKSPACE V2 ============ -->
@@ -5602,11 +5622,26 @@ document.querySelectorAll('[data-action="goto-release"]').forEach(btn=>{
 (function(){
   const shell = document.querySelector('.kb-shell');
   const toggle = document.getElementById('navToggle');
+  const backdrop = document.getElementById('kbDrawerBackdrop');
+  const isMobile = () => window.matchMedia('(max-width: 880px)').matches;
+  const closeDrawer = () => shell.classList.remove('sidebar-open');
+
   if(toggle && shell){
     toggle.addEventListener('click', () => {
-      shell.classList.toggle('nav-collapsed');
+      // Mobile: open/close the off-canvas drawer · Desktop: collapse the rail
+      if(isMobile()) shell.classList.toggle('sidebar-open');
+      else shell.classList.toggle('nav-collapsed');
     });
   }
+  // tap backdrop closes the drawer
+  if(backdrop) backdrop.addEventListener('click', closeDrawer);
+  // picking a workspace item closes the drawer on mobile
+  document.querySelectorAll('.kb-nav-item[data-ws]').forEach(item => {
+    item.addEventListener('click', () => { if(isMobile()) closeDrawer(); });
+  });
+  // Esc closes the drawer
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeDrawer(); });
+
   // Section group collapse (click divider)
   document.querySelectorAll('.kb-nav-group .kb-nav-divider').forEach(div => {
     div.addEventListener('click', (e) => {
