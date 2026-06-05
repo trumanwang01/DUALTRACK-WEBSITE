@@ -961,7 +961,12 @@
 
       .wrap      { padding: 0 20px; }
       .nav-inner { padding: 0 20px; }
-      .nav-links li:not(:last-child) { display: none; }
+      /* Mobile nav: keep only DUAL OS + 加入我們 visible */
+      .nav-links { gap: 14px; }
+      .nav-links li { display: none; }
+      .nav-links li:has(.nav-os-link),
+      .nav-links li:last-child { display: flex; }
+      .nav-os-link { padding: 6px 12px; }
 
       .section  { padding: 72px 0; }
       #hero     { padding: 64px 0; }
