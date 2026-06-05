@@ -6720,8 +6720,18 @@ document.querySelectorAll('[data-action="goto-release"]').forEach(btn=>{
 <script>
 (function(){
   /* ===== HOME boot / welcome animation ===== */
+  // Force the active workspace back to the Dashboard (home)
+  function goDashboard(){
+    document.querySelectorAll('.kb-panel').forEach(function(p){ p.classList.remove('active'); });
+    var home=document.querySelector('.kb-panel[data-workspace="home"]'); if(home) home.classList.add('active');
+    document.querySelectorAll('.kb-nav-item').forEach(function(i){ i.classList.remove('active'); });
+    var hn=document.querySelector('.kb-nav-item[data-ws="home"]'); if(hn) hn.classList.add('active');
+    document.body.classList.remove('vyve-active','truman-active');
+  }
+
   function playBoot(){
     if(document.querySelector('.boot')) return;
+    goDashboard(); // whatever was open, the welcome always reveals the Dashboard
     var el=document.querySelector('.nav-user-name');
     var name=(el&&el.textContent.trim())||'EVAN';
     var b=document.createElement('div'); b.className='boot';
@@ -6733,7 +6743,7 @@ document.querySelectorAll('[data-action="goto-release"]').forEach(btn=>{
       '<div class="boot-prompt">按任意鍵或點擊繼續 <span class="boot-cursor"></span></div></div>';
     document.body.appendChild(b);
     var done=false;
-    function dismiss(){ if(done)return; done=true; document.removeEventListener('keydown',onKey,true); b.classList.add('out'); setTimeout(function(){ if(b.parentNode)b.remove(); },600); }
+    function dismiss(){ if(done)return; done=true; document.removeEventListener('keydown',onKey,true); goDashboard(); window.scrollTo({top:0}); b.classList.add('out'); setTimeout(function(){ if(b.parentNode)b.remove(); },600); }
     function onKey(e){ e.preventDefault(); e.stopPropagation(); dismiss(); }
     document.addEventListener('keydown',onKey,true);
     b.addEventListener('click',dismiss);
