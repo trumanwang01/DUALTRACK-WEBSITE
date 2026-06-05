@@ -441,7 +441,7 @@ body.vyve-active .kb-side-foot .badge{ background:#1a1a22; color:#b8b5ae; border
 .vyve-core-grid .kb-ident-row:nth-child(5){ animation-delay:.33s; }
 
 /* ── VYVE category tabs ── */
-.vyve-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 28px; }
+.vyve-tabs{ position:sticky; top:60px; z-index:40; background:#060608; display:flex; gap:8px; flex-wrap:wrap; margin:0 0 24px; padding:14px 0 12px; }
 .vyve-tab{ font-family:'Noto Sans TC',sans-serif; font-weight:700; font-size:13px; letter-spacing:.02em; color:#a8a59f; background:#161620; border:.5px solid #23232e; padding:9px 18px; border-radius:980px; cursor:pointer; transition:color .2s,background .2s,border-color .2s; display:inline-flex; align-items:center; gap:7px; white-space:nowrap; }
 .vyve-tab .vyve-tab-en{ font-family:'DM Mono',monospace; font-size:9.5px; letter-spacing:.1em; opacity:.6; }
 .vyve-tab:hover{ color:#f0ece4; border-color:#3a3a48; }
@@ -488,6 +488,47 @@ body.vyve-active .kb-side-foot .badge{ background:#1a1a22; color:#b8b5ae; border
 @media (max-width:640px){ .vyve-drow{ grid-template-columns:1fr; gap:4px; } }
 .vyve-soon{ background:#121218; border:.5px dashed #2c2c38; border-radius:12px; padding:34px 26px; text-align:center; color:#68667a; line-height:1.8; margin-bottom:18px; }
 .vyve-soon b{ display:block; color:#c8a0ff; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.14em; margin-bottom:10px; }
+/* content-ops components */
+.vyve-bullets{ background:#121218; border:.5px solid #1e1e28; border-radius:12px; padding:14px 22px; margin-bottom:18px; }
+.vyve-bullet{ display:flex; gap:11px; padding:9px 0; font-size:12.5px; line-height:1.75; color:#c8c4bc; border-bottom:.5px solid #1a1a22; }
+.vyve-bullet:last-child{ border-bottom:none; }
+.vyve-bullet::before{ content:''; width:5px; height:5px; border-radius:50%; background:#7c4dff; margin-top:8px; flex-shrink:0; }
+.vyve-bullet b{ color:#f0ece4; font-weight:600; }
+.vyve-cap{ background:#1a1a22; border-radius:6px; padding:9px 14px; margin:6px 0; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.vyve-cap .cx{ font-family:'DM Mono',monospace; font-size:13px; color:#f0ece4; letter-spacing:.5px; }
+.vyve-cap .cn{ font-size:11px; color:#68667a; text-align:right; flex-shrink:0; }
+.vyve-subdiv{ font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.2em; color:#7c4dff; text-transform:uppercase; margin:22px 0 10px; display:flex; align-items:center; gap:10px; }
+.vyve-subdiv::before,.vyve-subdiv::after{ content:''; flex:1; height:.5px; background:#1e1e28; }
+.vyve-calwrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; margin-bottom:18px; border:.5px solid #1e1e28; border-radius:12px; }
+.vyve-cal{ width:100%; border-collapse:collapse; background:#121218; font-size:12px; min-width:440px; }
+.vyve-cal th{ font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.12em; color:#68667a; text-transform:uppercase; padding:11px 12px; text-align:left; border-bottom:.5px solid #1e1e28; }
+.vyve-cal td{ padding:11px 12px; border-bottom:.5px solid #1a1a22; vertical-align:top; color:#c8c4bc; line-height:1.55; }
+.vyve-cal tr:last-child td{ border-bottom:none; }
+.vyve-cal .d{ font-family:'DM Mono',monospace; font-size:10px; color:#68667a; white-space:nowrap; }
+.vyve-cal .cap{ font-family:'DM Mono',monospace; font-size:10.5px; color:#c8a0ff; white-space:nowrap; }
+.vyve-cal .scene{ font-size:10.5px; color:#68667a; }
+.vyve-pill{ display:inline-block; font-family:'DM Mono',monospace; font-size:9px; padding:2px 7px; border-radius:3px; background:rgba(124,77,255,.12); color:#c8a0ff; margin:1px; white-space:nowrap; }
+.vyve-spacegrid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:18px; }
+@media (max-width:640px){ .vyve-spacegrid{ grid-template-columns:1fr; } }
+.vyve-space{ background:#121218; border:.5px solid #1e1e28; border-left:2px solid #7c4dff; border-radius:8px; padding:14px 16px; }
+.vyve-space .sn{ font-size:13px; font-weight:700; color:#f0ece4; margin-bottom:3px; }
+.vyve-space .sm{ font-family:'DM Mono',monospace; font-size:10px; color:#68667a; margin-bottom:8px; letter-spacing:.04em; }
+.vyve-space .si{ font-size:11.5px; color:#c8c4bc; line-height:1.7; }
+.vyve-space code{ font-family:'DM Mono',monospace; font-size:10px; color:#c8a0ff; background:rgba(124,77,255,.1); padding:1px 5px; border-radius:2px; }
+
+/* ── VYVE mobile polish (extra) ── */
+@media (max-width:640px){
+  .vyve-tabs{ padding:11px 0 9px; margin-bottom:18px; gap:6px; }
+  .kb-ws-vyve .kb-ws-actions{ flex-wrap:wrap; gap:6px; }
+  .kb-ws-vyve .kb-ws-action{ font-size:11.5px; padding:7px 11px; }
+  .vyve-bullets{ padding:12px 16px; }
+  .vyve-bullet{ font-size:12px; }
+  .vyve-cap{ flex-direction:column; align-items:flex-start; gap:3px; padding:9px 12px; }
+  .vyve-cap .cn{ text-align:left; }
+  .vyve-story{ padding:18px 16px; }
+  .vyve-story p{ font-size:.9rem; line-height:1.9; }
+  .vyve-space{ padding:13px 14px; }
+}
 .kb-ws-vyve.active .kb-tri-card{ background:#121218; border-color:#1e1e28; }
 .kb-ws-vyve.active .kb-tri-name{ color:#f0ece4; }
 .kb-ws-vyve.active .kb-tri-desc{ color:#68667a; }
@@ -2776,11 +2817,127 @@ body.vyve-active .g-punch{ color:#9a98a8; }
     <div class="vyve-drow"><span class="dk">最想學</span><span class="dv"><strong>拳擊。</strong>提過一次，沒有下文。理由：「它是一對一的，沒有人可以幫你，所有事情都在你身上。」</span></div>
   </div>
 
-  <!-- ===== 內容操作策略 (待整合) ===== -->
-  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">內容操作策略</span><span class="meta">Content Ops · 社群策略 / 內容日曆</span></div>
-  <div class="vyve-soon">
-    <b>CONTENT OPS · 整理中</b>
-    社群操作策略與第一個月內容日曆即將整合進此分頁——核心原則、視覺系統、內容矩陣、發文節奏、冷啟動、Caption 庫、空間場景庫。
+  <!-- ===== 內容操作策略 (整合自 社群操作策略 + 第一個月內容日曆) ===== -->
+  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">核心原則</span><span class="meta">Core Principles · 所有社群決策的底層邏輯</span></div>
+  <div class="vyve-dcard">
+    <div class="vyve-drow"><span class="dk">她不是在表演</span><span class="dv">她的社群不是「看 VYVE 表演」的地方，是<strong>「你偶爾發現她在那裡」</strong>的地方。粉絲不是觀眾，是路過剛好看到她的人。</span></div>
+    <div class="vyve-drow"><span class="dk">空間先於人物</span><span class="dv">視覺語言是<strong>台灣的日常魔幻空間</strong>——便利商店、夜市、捷運、停車場頂樓、雨天咖啡廳。空間各有光線與情緒，VYVE 出現其中，不是空間配合她。</span></div>
+    <div class="vyve-drow"><span class="dk">風格不設限</span><span class="dv"><strong>沒有一種風格代表她，所有空間都是她的頻率。</strong>昏黃便利商店、工業感工廠、雨天漫射光都行。</span></div>
+    <div class="vyve-drow"><span class="dk">沉默即態度</span><span class="dv">不解釋、不介紹、不說「這張在哪拍」。<strong>頻率對了的人自然懂，不懂的人解釋了也沒用。</strong></span></div>
+  </div>
+  <div class="vyve-subdiv">五條操作底線</div>
+  <div class="vyve-bullets">
+    <div class="vyve-bullet"><span><b>不解釋圖片的意義</b> — 從不在 caption 說「這張是⋯」或「今天心情⋯」</span></div>
+    <div class="vyve-bullet"><span><b>不超過 3 個 hashtag</b> — 冷啟動可用，成長後逐步減到 0</span></div>
+    <div class="vyve-bullet"><span><b>Following 永遠是 0</b> — 她不追任何人，存在但不在乎社交規則</span></div>
+    <div class="vyve-bullet"><span><b>不接受不認同的品牌</b> — 就算沒標記也看得出違和感的那種，不要</span></div>
+    <div class="vyve-bullet"><span><b>不密集爆發然後消失</b> — 穩定的存在感比偶爾爆發更符合人設</span></div>
+  </div>
+
+  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">演算法重點</span><span class="meta">IG Algorithm 2025–2026 · 對 VYVE 的應用</span></div>
+  <div class="vyve-bullets">
+    <div class="vyve-bullet"><span>Views 比 Likes 重要，優化<b>完播率</b>；Saves & Shares 是最強互動信號</span></div>
+    <div class="vyve-bullet"><span>影片觸及比靜態圖多 <b>49%</b>；沒有 hashtag 的貼文觸及多 <b>23%</b></span></div>
+    <div class="vyve-bullet"><span>主題一致性比發文頻率更重要；Caption 關鍵字比 hashtag 更影響 SEO</span></div>
+    <div class="vyve-bullet"><span><b>對 VYVE：</b>Reels 是觸及引擎（每週至少 1 支）、Photo Dump 拉長停留增加 Saves、Caption 用英文關鍵字提高國際 SEO、成長後 hashtag 減到 0 靠 Keywords</span></div>
+  </div>
+
+  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">視覺系統</span><span class="meta">Visual System · 處理任何空間的方式</span></div>
+  <div class="vyve-dcard">
+    <div class="vyve-drow"><span class="dk">不是風格</span><span class="dv">不是「賽博龐克」或「黑白極簡」，而是<strong>「讓空間有溫度，讓人物有重量」</strong>。不同空間的光線情緒都屬於她的頻率。</span></div>
+    <div class="vyve-drow"><span class="dk">空間帶動氛圍</span><span class="dv">便利商店冷白、夜市暖橙、工廠冷硬、咖啡廳漫光。<strong>視覺基調跟著空間走，不強行套濾鏡。</strong></span></div>
+    <div class="vyve-drow"><span class="dk">人物不是主角</span><span class="dv">VYVE 佔比不超過畫面三分之一，在空間邊緣不在正中。<strong>你先被空間吸引，才看到她。</strong></span></div>
+    <div class="vyve-drow"><span class="dk">技術規格</span><span class="dv">Feed 主力 <strong>4:5</strong>；YouTube 縮圖 16:9；Stories/Reels 9:16。加入底片顆粒、輕微曝光不足、淺景深，像深夜隨手拍，不是 AI 精確圖。永遠要有一個主光源。</span></div>
+    <div class="vyve-drow"><span class="dk">1 Pro : 2 Casual</span><span class="dv">每 3 篇有 1 篇 Pro 感（高品質場景大圖 / DJ 全身），其餘是 casual（刺青特寫、杯子、CUXI 背影、夾鏈袋近景）。Grid 深淺色調交替，不要連三張全黑或全亮。</span></div>
+  </div>
+
+  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">五大內容策略</span><span class="meta">Content Strategy · 從頂尖帳號拆解</span></div>
+  <div class="vyve-dcard">
+    <div class="vyve-drow"><span class="dk">Photo Dump</span><span class="dv"><strong>讓粉絲翻私人相簿</strong>（參考 Jennie）。一次 6–10 張，不需高度相關，每張是不同時間片段但同一頻率。</span></div>
+    <div class="vyve-drow"><span class="dk">微片段敘事</span><span class="dv"><strong>圈內人才看得到的珍貴感</strong>（參考 Ariana）。5–10 秒律動殘影、選歌瞬間、環境光變化，每段至少出現一個標誌行為。</span></div>
+    <div class="vyve-drow"><span class="dk">情緒的空間</span><span class="dv"><strong>不是情緒的說明</strong>（重新定義 Selena）。她不說「今天很累」，讓深夜便利商店替她說。Caption 是另一個空間，不是說明書。</span></div>
+    <div class="vyve-drow"><span class="dk">彩蛋行銷</span><span class="dv"><strong>讓粉絲成為偵探</strong>（參考 Taylor）。夾鏈袋每次放不同東西、背景路牌、caption 數字（<code>ep.04</code>）、CUXI 生日出現。每 3 篇一個就夠。</span></div>
+    <div class="vyve-drow"><span class="dk">情緒渲染</span><span class="dv"><strong>讓人感受一種狀態</strong>（參考 ROSÉ）。每張圖發出前問：「這張讓你感覺到什麼狀態？」說不出來就不夠好。</span></div>
+  </div>
+
+  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">Feed × Stories × Reels</span><span class="meta">三平台分工</span></div>
+  <div class="vyve-dcard">
+    <div class="vyve-drow"><span class="dk">Feed</span><span class="dv"><strong>精選展間。</strong>維持酷感與高質感，每張都是「她存在於這個世界」的視覺證明，不需頻繁但每張要能讓人多看幾秒。</span></div>
+    <div class="vyve-drow"><span class="dk">Stories</span><span class="dv"><strong>真實的碎片。</strong>不一定本人出現——她的視角：正在聽的 Spotify、深夜街景、CUXI 的腳、雨打在窗上。越不刻意越好。</span></div>
+    <div class="vyve-drow"><span class="dk">Reels</span><span class="dv"><strong>觸及引擎。</strong>5–30 秒，優先律動與空間氛圍，前 3 秒就要讓人停下。讓陌生人第一次找到 VYVE 的主要管道。</span></div>
+  </div>
+
+  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">發文節奏</span><span class="meta">Posting Rhythm · 穩定存在感</span></div>
+  <div class="vyve-dcard">
+    <div class="vyve-drow"><span class="dk">每週總量</span><span class="dv"><strong>Feed ×3、Stories ×6、Reels ×1。</strong>週三上 Reel（演算法推送強）、週六上 Feed（週末停留長）。週日休息。</span></div>
+    <div class="vyve-drow"><span class="dk">發文時間</span><span class="dv">IG Feed 晚上 <strong>9–11pm</strong>（台灣，同時涵蓋日韓東南亞）、Reels 週三 7–9pm、YouTube 週五 10pm。Stories 不要早上發——她是深夜的人。</span></div>
+    <div class="vyve-drow"><span class="dk">Photo Dump</span><span class="dv">每兩週一次取代一篇 Feed，6–10 張。必含一張「看不懂但想多看」的彩蛋 + 一張標誌細節特寫。第一張最強，最後一張放暗色收尾。</span></div>
+    <div class="vyve-drow"><span class="dk">Reels 規格</span><span class="dv">7–15 秒，前 3 秒要有鉤子。三種輪替：律動 / 空間氛圍 / 標誌細節。<strong>用她自己策展的音樂，不跟風 trending 音樂。</strong>不加字幕。</span></div>
+  </div>
+
+  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">冷啟動三階段</span><span class="meta">Cold Start · 從 0 開始的路徑</span></div>
+  <div class="vyve-dcard">
+    <div class="vyve-drow"><span class="dk">1–30 天</span><span class="dv"><strong>建立視覺語言，讓算法認識她。</strong>前 9 張構成完整 Grid（同週發完）；用 3–5 個精準 niche hashtag；每支 Reel 跨發 TikTok；每天 Stories。<em>KPI：開始有人主動追蹤。</em></span></div>
+    <div class="vyve-drow"><span class="dk">31–90 天</span><span class="dv"><strong>穩定節奏，找出主力受眾。</strong>hashtag 減到 1–2 個；用數據（完播 / Saves）決定下一批場景；首次 Photo Dump；彩蛋系統植入；跨發 YouTube。<em>KPI：500 追蹤。</em></span></div>
+    <div class="vyve-drow"><span class="dk">91 天後</span><span class="dv"><strong>降低行動，提高質量。</strong>hashtag 全移除靠品牌力與 Keywords；Caption 趨近極簡；Following 維持 0；評估第一個品牌合作。<em>KPI：1000 追蹤、開始有機推薦。</em></span></div>
+    <div class="vyve-drow"><span class="dk">前 9 張順序</span><span class="dv">主圖全身場景 → 細節特寫 → 暗色氛圍 → 3/4 側臉 → 不同空間 → 第一個彩蛋(夾鏈袋) → Photo Dump → CUXI 背影 → 另一場景大圖。<strong>同一週發完</strong>給算法連續信號。</span></div>
+  </div>
+
+  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">Caption 庫</span><span class="meta">Caption Library · 英文或純符號，最多一行</span></div>
+  <div class="vyve-subdiv">場景型</div>
+  <div class="vyve-cap"><span class="cx">taipei.</span><span class="cn">地點加句點，乾。</span></div>
+  <div class="vyve-cap"><span class="cx">04:12</span><span class="cn">深夜時間，粉絲自己感受重量。</span></div>
+  <div class="vyve-cap"><span class="cx">last train. / closing time.</span><span class="cn">末班車 / 收攤場景。</span></div>
+  <div class="vyve-cap"><span class="cx">somewhere in taipei</span><span class="cn">有 SEO 又保持神秘。</span></div>
+  <div class="vyve-subdiv">音樂 / 彩蛋 / Photo Dump 型</div>
+  <div class="vyve-cap"><span class="cx">frequency check. / on repeat.</span><span class="cn">VYVE 的語感。</span></div>
+  <div class="vyve-cap"><span class="cx">ep.04 / next. / still here.</span><span class="cn">彩蛋，讓粉絲問，不解釋。</span></div>
+  <div class="vyve-cap"><span class="cx">lately. / february. / 🌑</span><span class="cn">Photo Dump 經典。</span></div>
+  <div class="note" style="background:rgba(124,77,255,.06);border:.5px solid rgba(124,77,255,.2);">發文前最後一問：「如果完全不加 Caption，這張圖還能說話嗎？」可以就什麼都不放；不行代表圖還不夠強。</div>
+
+  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">空間場景庫</span><span class="meta">Space Library · 不是風格，是頻率</span></div>
+  <div class="vyve-spacegrid">
+    <div class="vyve-space"><div class="sn">深夜便利商店</div><div class="sm">凌晨3點 · 冷白日光燈 · 雨</div><div class="si">孤獨但不悲傷 · Techno × Ambient · <code>04:12</code></div></div>
+    <div class="vyve-space"><div class="sn">夜市收攤前</div><div class="sm">晚上11點 · 橙黃燈泡</div><div class="si">熱鬧消退、有點感傷 · Bossa × Future Bass · <code>closing time.</code></div></div>
+    <div class="vyve-space"><div class="sn">捷運末班車</div><div class="sm">凌晨12點 · 螢光燈 · 空車廂</div><div class="si">漂泊感 · Ambient × Tape Hiss · <code>last train.</code></div></div>
+    <div class="vyve-space"><div class="sn">停車場頂樓</div><div class="sm">傍晚6點 · 城市燈光初亮</div><div class="si">城市邊緣感 · Chillwave × Shoegaze · <code>somewhere in taipei</code></div></div>
+    <div class="vyve-space"><div class="sn">廢棄工廠</div><div class="sm">深夜 · 工業感 · DJ 台前</div><div class="si">能量強、沉浸、不表演 · Hard Techno × Industrial · <code>frequency check.</code></div></div>
+    <div class="vyve-space"><div class="sn">雨天咖啡廳</div><div class="sm">下午3點 · 漫射光 · 雨打窗</div><div class="si">安靜、沒有目的 · Jazz-Hop × City Pop · <code>—</code></div></div>
+    <div class="vyve-space"><div class="sn">東京深夜街道</div><div class="sm">深夜 · 招牌光 · 濕路面</div><div class="si">最自在的城市 · City Pop × Ambient House · <code>tokyo.</code></div></div>
+    <div class="vyve-space"><div class="sn">未定義空間</div><div class="sm">VYVE 選的空間就是對的</div><div class="si">判斷：有沒有「她的頻率」 · 新空間 = 新彩蛋</div></div>
+  </div>
+
+  <div class="kb-ws-h" data-cat="contentstrat"><span class="n">·</span><span class="lab">第一個月內容日曆</span><span class="meta">Month One · 生活照為主，不經意透露 DJ 身份</span></div>
+  <div class="vyve-dcard">
+    <div class="vyve-drow"><span class="dk">生活照 A</span><span class="dv"><strong>街頭隨手。</strong>自然光、輕微失焦、不完美構圖。<strong>耳機掛頸</strong>是最自然的 DJ 線索。</span></div>
+    <div class="vyve-drow"><span class="dk">生活照 B</span><span class="dv"><strong>居家室內。</strong>CUXI、Spotify 介面、深夜台燈。DJ 線索：介面隱約可見 Techno/Ambient 歌名。</span></div>
+    <div class="vyve-drow"><span class="dk">專業照</span><span class="dv"><strong>戶外自然光。</strong>介於隨手拍與大片之間，穿搭是重點。線索：耳機掛頸 + 手裡小配件(USB)。</span></div>
+    <div class="vyve-drow"><span class="dk">本月 hashtag</span><span class="dv"><span class="vyve-pill">#taiwannight</span><span class="vyve-pill">#lofimusic</span><span class="vyve-pill">#djgirl</span><span class="vyve-pill">#ambientmusic</span><span class="vyve-pill">#taipei</span></span></div>
+    <div class="vyve-drow"><span class="dk">穿搭原則</span><span class="dv">腰線優先(高腰) · 上下一寬一窄的對比 · 際領層次。深色 tonal 為主，耳機掛頸是核心配件。</span></div>
+  </div>
+  <div class="vyve-subdiv">月度發文總表</div>
+  <div class="vyve-calwrap">
+    <table class="vyve-cal">
+      <tr><th>時間</th><th>類型</th><th>內容</th><th>Caption</th></tr>
+      <tr><td class="d">W1 二</td><td><span class="vyve-pill">生活A</span></td><td>街頭隨手 · 黑上衣+高腰窄裙<div class="scene">耳機掛頸 · 台北街道</div></td><td class="cap">taipei.</td></tr>
+      <tr><td class="d">W1 三</td><td><span class="vyve-pill">Reel</span></td><td>街頭走動律動 · 15s<div class="scene">音樂是她選的</div></td><td class="cap">🎧</td></tr>
+      <tr><td class="d">W1 四</td><td><span class="vyve-pill">生活B</span></td><td>居家 · CUXI + 手邊細節<div class="scene">Spotify 介面隱約可見</div></td><td class="cap">—</td></tr>
+      <tr><td class="d">W1 六</td><td><span class="vyve-pill">專業</span></td><td>戶外自然光全身<div class="scene">耳機掛頸</div></td><td class="cap">🌑</td></tr>
+      <tr><td class="d">W2 二</td><td><span class="vyve-pill">生活A</span></td><td>街頭 · 白T高腰牛仔<div class="scene">隨手拍感</div></td><td class="cap">04:12</td></tr>
+      <tr><td class="d">W2 三</td><td><span class="vyve-pill">Reel</span></td><td>居家律動片段 · 10s</td><td class="cap">on repeat.</td></tr>
+      <tr><td class="d">W2 四</td><td><span class="vyve-pill">生活B</span></td><td>手腕刺青特寫 · 第一個彩蛋</td><td class="cap">—</td></tr>
+      <tr><td class="d">W2 六</td><td><span class="vyve-pill">Dump</span></td><td>第一次 Photo Dump · 6 張</td><td class="cap">lately.</td></tr>
+      <tr><td class="d">W3 二</td><td><span class="vyve-pill">專業</span></td><td>戶外半身 · USB 彩蛋</td><td class="cap">somewhere in taipei</td></tr>
+      <tr><td class="d">W3 三</td><td><span class="vyve-pill">Reel</span></td><td>穿搭轉場 · 15s</td><td class="cap">frequency check.</td></tr>
+      <tr><td class="d">W3 六</td><td><span class="vyve-pill">生活A</span></td><td>街頭 · 透明夾鏈袋初登場</td><td class="cap">ep.01</td></tr>
+      <tr><td class="d">W4 二</td><td><span class="vyve-pill">生活B</span></td><td>CUXI 第二次出現</td><td class="cap">🌑🌑</td></tr>
+      <tr><td class="d">W4 三</td><td><span class="vyve-pill">Reel</span></td><td>夜晚街頭漫步律動 · 15s</td><td class="cap">late night.</td></tr>
+      <tr><td class="d">W4 六</td><td><span class="vyve-pill">Dump</span></td><td>第二次 Photo Dump · 8 張</td><td class="cap">february.</td></tr>
+    </table>
+  </div>
+  <div class="vyve-soon" style="border-style:dashed;">
+    <b>完整素材 PROMPT · 另存生產文件</b>
+    每篇貼文的 OpenArt / Kling 生成 prompt（9 組素材 + 4 支 Reel 起始幀）量大且屬製作用途，未放入此知識分頁。需要時可另開「素材生成」子頁或交給我整批導入。
   </div>
 
 </div>
@@ -5296,7 +5453,7 @@ document.querySelectorAll('.kb-ws-action').forEach(btn=>{
     if(targetId){
       setTimeout(()=>{
         const el=document.getElementById(targetId);
-        if(el){ const y=el.getBoundingClientRect().top+window.pageYOffset-72; window.scrollTo({top:Math.max(0,y),behavior:'smooth'}); }
+        if(el){ if(window.__vyveScrollTo) window.__vyveScrollTo(el); else el.scrollIntoView({behavior:'smooth',block:'start'}); }
       }, 70);
     }
   });
@@ -5328,7 +5485,7 @@ if(lightbox){
 document.querySelectorAll('[data-action="goto-album"]').forEach(btn=>{
   btn.addEventListener('click',()=>{
     if(window.__vyveShow) window.__vyveShow('music');
-    setTimeout(()=>{ const el=document.getElementById('album-section'); if(el){ const y=el.getBoundingClientRect().top+window.pageYOffset-72; window.scrollTo({top:Math.max(0,y),behavior:'smooth'}); } }, 70);
+    setTimeout(()=>{ const el=document.getElementById('album-section'); if(window.__vyveScrollTo) window.__vyveScrollTo(el); }, 70);
   });
 });
 
@@ -5366,6 +5523,14 @@ document.querySelectorAll('[data-action="goto-album"]').forEach(btn=>{
     return { cat, els };
   });
 
+  function scrollToEl(el){
+    if(!el) return;
+    const off = 60 + (host.offsetHeight || 0) + 14;
+    const y = el.getBoundingClientRect().top + window.pageYOffset - off;
+    window.scrollTo({ top: Math.max(0, y), behavior:'smooth' });
+  }
+  window.__vyveScrollTo = scrollToEl;
+
   function show(cat){
     sections.forEach(s=>{ const hide = s.cat!==cat; s.els.forEach(el=>el.classList.toggle('vyve-cat-hidden', hide)); });
     host.querySelectorAll('.vyve-tab').forEach(t=>t.classList.toggle('active', t.dataset.cat===cat));
@@ -5379,8 +5544,9 @@ document.querySelectorAll('[data-action="goto-album"]').forEach(btn=>{
     b.innerHTML = c.zh + ' <span class="vyve-tab-en">' + c.en + '</span>';
     b.addEventListener('click', ()=>{
       show(c.id);
-      const y = host.getBoundingClientRect().top + window.pageYOffset - 72;
-      window.scrollTo({ top: Math.max(0, y), behavior:'smooth' });
+      // jump straight to the first section of this category (not stay on the page)
+      const sec = sections.find(s=>s.cat===c.id);
+      scrollToEl(sec ? sec.els[0] : host);
     });
     host.appendChild(b);
   });
