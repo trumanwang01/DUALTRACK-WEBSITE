@@ -5183,9 +5183,11 @@ document.querySelectorAll('[data-action="goto-release"]').forEach(btn=>{
     </button>
   </div>
   <div class="dual-chat-body" id="dualChatBody">
-    <div class="dual-msg bot">嗨，我是 <b>D</b> — DUAL Entertainment 的 AI 特助。我整合了七大 OS 的資料：藝人、IP、議題、業務、知識，都能問我。</div>
-    <div class="dual-msg-meta">D · 剛才</div>
-    <div class="dual-msg bot">查資料、講方法、動手做（品牌偵察 / 起草開發信 / 報價拆解）都行。下面有常用主題，或直接打字。</div>
+    <div class="dual-msg bot">嗨嗨～我是 <b>DUAL</b> 👋 你可以叫我 <b>DUAL</b>、<b>D</b>，或是「<b>多爾</b>」——隨便你，反正我都會回頭 😎</div>
+    <div class="dual-msg-meta">DUAL · 剛才</div>
+    <div class="dual-msg bot">職稱是「DUAL Entertainment 特助」，但其實我就是把公司七大 OS 的資料全背起來的那個傢伙。藝人、IP、議題、報價、合約⋯你問，我答；答不出來我就翻資料庫，總之不會放你一個人 🙌</div>
+    <div class="dual-msg-meta">DUAL · 剛才</div>
+    <div class="dual-msg bot">下面有幾個常用的，點一下就好；或直接打字跟我聊，我不咬人。</div>
   </div>
   <div class="dual-chat-suggestions" id="dualChatSug">
     <button class="dual-sug" data-q="你能做什麼" data-to="help">你能做什麼</button>
@@ -5370,9 +5372,34 @@ document.querySelectorAll('[data-action="goto-release"]').forEach(btn=>{
       msg:'DUAL 開發虛擬 IP 的實戰流程（VYVE / TRUMAN 走過的路）：\n\n**1. 議題定錨**\n先確定 IP 承載哪個社會議題（VYVE＝頻率對位/無性別；TRUMAN＝道德偽裝）。\n\n**2. 人物聖經**\n設定、美學核心、語言風格、不變配件、哲學金句——細到「絕不做什麼」。\n\n**3. 生產管線**\nMidjourney（形象）＋ Suno/ElevenLabs（聲音音樂）＋ Kling/Hedra（動態）＋ CapCut（剪輯），月成本壓在 NT$3-6K。\n\n**4. 平台節奏**\n固定格式＋固定頻率（TRUMAN 每週 90 秒 Reels；VYVE EP＋三平台迴圈）。\n\n**5. 回寫大腦**\n每支內容的數據與判斷回寫 Agency Brain，下一個 IP 開發更快。\n\n第 6 號 IP（議題「獨居世代」）預計 2026 Q3 用這套啟動。',
       sug:['VYVE 詳細資料','王楚門 TRUMAN','工具棧與成本'] },
 
+    { id:'vyve-content', kw:{'vyve 內容策略':4,'vyve 內容':3,'內容策略':3,'vyve 發什麼':3,'vyve 經營':3},
+      title:'VYVE 內容策略',
+      msg:'VYVE 的內容不是「發文」，是**持續釋放頻率**。原則是：少說明、多氛圍、留鉤子。\n\n**三層內容結構**\n• **氛圍層**（日常）：私服、選物、深夜歌單截圖——建立「她是真的存在」的生活感\n• **作品層**（主軸）：SIGNAL EP、DJ set、視覺短片——IP 的核心輸出\n• **互動層**（共創）：留白式提問、讓粉絲補完世界觀（「頻率對了，解釋是多餘的」）\n\n**平台分工**\nIG＝氛圍與人設 · YouTube＝完整作品 · Spotify＝音樂沉澱。\n\n**鐵則**：絕不解釋太多、絕不討好、絕不破壞「悶騷有態度」的調性。寧可少一篇，不要 OOC。',
+      sug:['三平台流量怎麼跑','VYVE 的受眾是誰','VYVE 的穿搭系統'] },
+
+    { id:'vyve-3platform', kw:{'三平台':4,'流量怎麼跑':3,'平台迴圈':3,'流量迴圈':3,'三個平台':3,'平台策略':2},
+      title:'三平台流量迴圈',
+      msg:'VYVE 的三平台不是各自為政，是一個**會自己轉的飛輪** 🌀\n\n**YouTube（蓄水）**\n完整 MV / DJ set，停留時間長、可被搜尋、長尾流量池。\n\n**Instagram（引流）**\nReels 切片 + 氛圍圖鉤住眼球，把人導去 YT 看完整版、去 Spotify 收藏。\n\n**Spotify（沉澱）**\n聽眾變「月聽眾」，演算法推薦帶來陌生但精準的新粉。\n\n**怎麼轉**：YT 發完整 → IG 切 3-5 支短片導流 → Spotify 上架收藏 → 數據回看哪支切片最強 → 下一輪加碼。一條內容，三平台吃三次。',
+      sug:['VYVE 的內容策略','SIGNAL EP 是什麼','VYVE 受眾是誰'] },
+
+    { id:'client-deck', kw:{'客戶簡報':4,'簡報怎麼寫':3,'提案簡報':3,'怎麼提案':3,'簡報架構':3,'deck':2,'ppt':2},
+      title:'客戶簡報怎麼寫',
+      msg:'DUAL 的客戶簡報不從「我們有什麼藝人」開始，而是從**「你在意的那件事」**開始。Action 模組會自動帶出骨架：\n\n1. **議題開場** — 你的受眾正在焦慮/在意什麼（附流量數據）\n2. **痛點對位** — 這個議題和品牌定位怎麼重疊\n3. **IP 配置** — 配哪幾個 IP、各自用什麼聲線切入\n4. **帶狀腳本** — 6-12 週的內容節奏與露出\n5. **成效預估** — 觸及、互動、轉化的合理區間\n6. **報價與分期** — 清楚拆解，不藏東西\n\n心法：**前三頁不要出現「業配」兩個字**。先賣議題與判斷力，藝人是後面才登場的工具。要我幫你套一個品牌試寫嗎？',
+      sug:['起草開發信','帶狀提案架構','幫我配對一個品牌'] },
+
+    { id:'banded-proposal', kw:{'帶狀提案':4,'提案架構':3,'帶狀架構':3,'帶狀怎麼提':3,'提案怎麼做':2},
+      title:'帶狀提案架構',
+      msg:'一份帶狀企劃提案，長這樣（這是 DUAL 跟單次業配最不一樣的地方）：\n\n**① 議題定錨**\n選一個正在發酵的在意（例：容貌焦慮、獨居儀式感），附上聲量數據。\n\n**② 聲部設計**\n同一議題，分配給 2-4 個不同屬性 IP，每個 IP 一條「聲線」——美妝從產品說、心理 IP 從情緒說、時尚 IP 從認同說。\n\n**③ 時間軸**\n6-12 週節奏：鋪陳 → 引爆 → 共創 → 收斂，每週誰發什麼一目了然。\n\n**④ 品牌融入點**\n品牌不是貼 logo，是「成為議題敘事的一部分」。\n\n**⑤ 成效與報價**\nNT$150-500K / 案，毛利 35-45%。\n\n要我用一個實際議題幫你排一份時間軸嗎？',
+      sug:['帶狀企劃怎麼運作','現在有哪些議題可用','客戶簡報怎麼寫'] },
+
+    { id:'issue-judge', kw:{'議題怎麼判斷':4,'判斷會發酵':3,'會不會紅':3,'議題判斷':3,'怎麼選議題':3,'發酵':2},
+      title:'怎麼判斷議題會發酵',
+      msg:'不是看「現在多紅」，紅的時候進場已經慢了。DUAL 看**三個訊號**：\n\n**1. 受眾規模 × 情緒強度**\n不只多少人關心，而是他們「有多在意」。弱情緒的大眾話題，輸給強情緒的小眾痛點。\n\n**2. 商業可承接性**\n這個議題背後有沒有「願意付錢說話」的產業？（情緒勞動 → 諮商/保健；獨居 → 家具/食品）\n\n**3. 文化長尾**\n是三天就退燒的迷因，還是會持續滲透半年的結構性轉變？我們要的是後者。\n\n**驗證方式**：用小成本內容試水溫，看數據再決定加碼，不靠感覺硬撐。每週議題庫會盤點 5-8 個，打分數排序。',
+      sug:['議題庫現在有什麼','哪個議題最好變現','幫我配對一個品牌'] },
+
     { id:'help', kw:{'你能做什麼':4,'功能':2,'help':3,'幫助':2,'怎麼用':2,'可以問什麼':3,'能問':2},
       title:'能力導引',
-      msg:'我是 D，DUAL 的 AI 特助。我整合了七大 OS 的資料，可以幫你：\n\n**查資料**\n藝人陣容、VYVE/TRUMAN 詳情、議題庫、服務報價、生態夥伴、團隊、路線圖\n\n**講方法**\n議題先行方法論、帶狀企劃、護城河三層、DUAL OS、五技能模組、Academy\n\n**動手做**\n品牌偵察、起草開發信、合約/分潤建議、報價拆解\n\n直接打字問我，或點下面的建議。完整版會接 RAG，從 Notion / Airtable / Slack 即時撈真實資料。',
+      msg:'好問題～我能幫的比你想的多 😎 大致分三種：\n\n**🔍 查資料**\n藝人陣容、VYVE / 王楚門 詳情、議題庫、服務報價、生態夥伴、團隊、路線圖——你想知道的公司事，問就對了。\n\n**🧠 講方法**\n議題先行、帶狀企劃、護城河三層、DUAL OS、五技能模組、Academy——這些我能講到你打哈欠為止（開玩笑，我會講重點）。\n\n**✍️ 動手做**\n品牌偵察、起草開發信、合約 / 分潤建議、報價拆解——不只動嘴，也動手。\n\n直接打字，或點下面那排都行。問倒我的話，正式版接上即時資料庫後我再扳回一城 💪',
       sug:['藝人陣容','帶狀企劃報價','VYVE 是誰'] },
   ];
 
@@ -5388,19 +5415,24 @@ document.querySelectorAll('[data-action="goto-release"]').forEach(btn=>{
     'VYVE 詳細資料':'vyve','VYVE 是誰':'vyve','VYVE 總覽':'vyve',
     '三位代理 KOL 適合什麼議題':'agents-kol','代理 KOL 詳情':'agents-kol',
     '虛擬 IP 怎麼開發':'virtual-ip-dev','虛擬 IP 開發流程':'virtual-ip-dev',
-    'VYVE 的受眾是誰':'vyve-audience','VYVE 受眾是誰':'vyve-audience','VYVE 受眾':'vyve-audience','什麼是頻率對位':'vyve-audience','VYVE 的內容策略':'vyve-audience',
-    'SIGNAL EP 是什麼':'vyve-music','SIGNAL EP':'vyve-music','三平台流量怎麼跑':'vyve-music','VYVE 的視覺風格':'vyve-music',
+    'VYVE 的受眾是誰':'vyve-audience','VYVE 受眾是誰':'vyve-audience','VYVE 受眾':'vyve-audience','什麼是頻率對位':'vyve-audience',
+    'VYVE 的內容策略':'vyve-content','VYVE 內容策略':'vyve-content',
+    '三平台流量怎麼跑':'vyve-3platform','三平台流量迴圈':'vyve-3platform',
+    'SIGNAL EP 是什麼':'vyve-music','SIGNAL EP':'vyve-music','VYVE 的視覺風格':'vyve-music',
     'VYVE 的穿搭系統':'vyve-style','VYVE 穿搭系統':'vyve-style','VYVE 的標誌性細節':'vyve-style',
     'VYVE 適合接什麼品牌':'vyve-brandfit','VYVE 適合什麼品牌':'vyve-brandfit','VYVE 品牌適配':'vyve-brandfit','配什麼 IP 最好':'issues',
+    '幫我查純萃飲料這個品牌':'brand-recon','幫我配對一個品牌':'issues',
     '王楚門適合什麼議題':'truman','道德偽裝是什麼':'truman','王楚門 TRUMAN':'truman',
     '王楚門怎麼變現':'truman-monetize','王楚門變現':'truman-monetize','王楚門變現路徑':'truman-monetize',
     '這三位能組什麼帶狀企劃':'banded','藝人合作禁忌怎麼管':'contract','業配報價怎麼定':'pricing',
-    '帶狀企劃怎麼運作':'banded','帶狀企劃是什麼':'banded','帶狀企劃報價拆解':'banded','帶狀提案架構':'banded','帶狀企劃報價':'banded','帶狀企劃':'banded',
+    '帶狀企劃怎麼運作':'banded','帶狀企劃是什麼':'banded','帶狀企劃報價拆解':'banded','帶狀企劃報價':'banded','帶狀企劃':'banded',
+    '帶狀提案架構':'banded-proposal',
     '和 4A 差在哪':'vs-traditional','為什麼不從藝人出發':'vs-traditional','和 4A／傳統經紀的差異':'vs-traditional',
     '服務報價多少':'pricing','服務報價':'pricing','佣金 vs 顧問費怎麼選':'pricing','長約有折扣嗎':'pricing',
     '現在有哪些議題可用':'issues','議題庫現在有什麼':'issues','哪個議題最好變現':'issues','幫我配對一個品牌':'issues','現在有哪些議題':'issues','議題庫':'issues',
-    '客戶簡報怎麼寫':'modules','Script 怎麼開案':'modules','Memory 為什麼是護城河':'modules','五技能模組是什麼':'modules','五技能模組':'modules',
-    '議題怎麼判斷會發酵':'methodology','議題先行詳解':'methodology','議題先行方法論':'methodology','為什麼不從藝人':'methodology',
+    '客戶簡報怎麼寫':'client-deck',
+    'Script 怎麼開案':'modules','Memory 為什麼是護城河':'modules','五技能模組是什麼':'modules','五技能模組':'modules',
+    '議題怎麼判斷會發酵':'issue-judge','議題先行詳解':'methodology','議題先行方法論':'methodology','為什麼不從藝人':'methodology',
     '護城河三層是什麼':'moat','護城河在哪':'moat','護城河三層':'moat',
     '找個攝影夥伴':'ecosystem','夥伴怎麼進系統':'ecosystem','生態夥伴有哪些':'ecosystem','生態夥伴網絡':'ecosystem',
     'Agency Brain 是什麼':'os','Agency Brain 怎麼運作':'os','DUAL OS 七系統':'os','DUAL OS 七大系統':'os',
@@ -5429,31 +5461,40 @@ document.querySelectorAll('[data-action="goto-release"]').forEach(btn=>{
     return null;
   }
 
-  // Conversational variety
+  // Conversational variety — DUAL 的真人感語氣
   const GREETLINES = [
-    '嗨，我是 D 👋 想查 DUAL 的什麼？藝人、議題、報價、方法論都可以問我。',
-    '哈囉！需要我幫你查資料、講方法、還是動手做（品牌偵察 / 開發信 / 報價拆解）？',
-    '你好～我在。藝人陣容、VYVE、王楚門、帶狀企劃、護城河，挑一個開始吧。'
+    '嗨嗨～我是 DUAL（D、多爾都行）👋 今天想聊點什麼？藝人、議題、報價、方法論，我都接。',
+    '哈囉！來對人了 😎 查資料、講方法、還是直接動手（品牌偵察 / 開發信 / 報價拆解）？你說。',
+    '你好啊～我醒著呢。VYVE、王楚門、帶狀企劃、護城河⋯挑一個，我們開始。'
   ];
   const THANKLINES = [
-    '不客氣 🙌 還有想了解的儘管問。',
-    '隨時都在～需要我接著查別的嗎？',
-    '應該的！要不要我順手幫你拆個報價或起草開發信？'
+    '不客氣啦 🙌 這點小事～還想知道什麼儘管丟給我。',
+    '小意思！要不要我順手再幫你拆個報價、或起草一封開發信？',
+    '客氣什麼～我們可是同一隊的 😏 還有別的嗎？'
   ];
   const BYELINES = [
-    '掰掰 👋 需要時隨時叫我，D 都在。',
-    '先這樣～下次想聊議題或 IP 再找我。',
-    '好的，祝順利！記得帶狀企劃可以一個議題打多個 IP 😉'
+    '掰啦 👋 我永遠在這個小視窗裡，想我就點開。',
+    '先這樣～下次想搞個帶狀企劃再來找我 😉',
+    '去忙吧！記得：議題先行，但別先焦慮。有事喊我。'
   ];
   const PRAISELINES = [
-    '哈，過獎了 😎 還想了解 DUAL 的哪一塊？議題、IP、報價、護城河我都能往下聊。',
-    '謝啦！這些都是 DUAL OS 整理好的，我只是幫你撈出來。要不要再深入一點？',
-    '嘿嘿，這還只是 DEMO，正式版接上即時資料會更猛。想試試哪個主題？'
+    '欸謝謝 😎 不過真正厲害的是背後那套 DUAL OS，我只是嘴比較快。還想聊哪塊？',
+    '哈哈別這樣，我會驕傲（但請繼續）。要不要再深入一點？',
+    '收下了，今晚加菜 🍱 來，下一題想問什麼？'
   ];
   const FALLBACKLINES = [
-    '這題我在 DEMO 知識庫裡還沒有現成卡片，但我可以往這幾個方向幫你看——下面挑一個，或換個說法問我。正式版會接 RAG 從 Notion / Airtable / Slack 撈即時資料。',
-    '嗯～這有點超出目前載入的 DEMO 資料。我猜你可能想問下面這些，或描述具體一點（某個 IP、某個議題、報價）我就能答得更準。',
-    '目前的 DEMO 知識庫暫時沒收錄這題，別擔心，我先列幾個相關主題給你。正式版我會即時連到公司資料庫，幾乎都查得到。'
+    '唔～這題我手上的 DEMO 資料還沒收到 😅 但我大概猜得到你想往哪走，下面挑一個、或換句話說再問我一次。正式版接上即時資料庫後，這種我基本都答得出來。',
+    '老實說這題考倒我了一下下 🤔 要不你再講具體一點（哪個 IP？哪個議題？還是報價？），或從下面選一個，我馬上補上。',
+    '這個目前不在我背起來的範圍裡，先別急——我列幾個相關的給你。等正式版連上 Notion / Airtable / Slack，我就是你的活字典了 📚'
+  ];
+  // 隨機開場白，讓每則回覆更像在對話
+  const LEADINS = [
+    '來，幫你整理好了 👇',
+    '這題我熟，看這邊 👇',
+    '問到重點了！👇',
+    'OK～乾貨直接上 👇',
+    '好喔，重點都在這 👇',
+    '這個有意思，說給你聽 👇'
   ];
 
   function scoreQuery(q){
@@ -5484,7 +5525,7 @@ document.querySelectorAll('[data-action="goto-release"]').forEach(btn=>{
     body.appendChild(m);
     const meta = document.createElement('div');
     meta.className = 'dual-msg-meta';
-    meta.textContent = (who === 'bot' ? 'D · ' : 'You · ') + '剛才';
+    meta.textContent = (who === 'bot' ? 'DUAL · ' : 'You · ') + '剛才';
     body.appendChild(meta);
     body.scrollTop = body.scrollHeight;
   }
@@ -5523,7 +5564,8 @@ document.querySelectorAll('[data-action="goto-release"]').forEach(btn=>{
 
   function emit(topic){
     lastTopic = topic;
-    appendMsg(topic.msg, 'bot');
+    // friendly lead-in so each answer feels like a person talking, not a database dump
+    appendMsg(pick(LEADINS) + '\n\n' + topic.msg, 'bot');
     updateSuggestions(topic.sug);
   }
 
@@ -5547,7 +5589,7 @@ document.querySelectorAll('[data-action="goto-release"]').forEach(btn=>{
     }
     // 1c) identity
     if(/(你是誰|你叫什麼|你是什麼|妳是誰|who are you|介紹一下你|你的名字)/i.test(raw)){
-      appendMsg('我是 **D**，DUAL Entertainment 的 AI 特助 🤖 公司七大 OS 的資料我都讀進來了——藝人、IP、議題、報價、方法論、合約都能問。正式版會接 RAG，從 Notion / Airtable / Slack 撈即時資料。', 'bot');
+      appendMsg('我是 **DUAL** 🤖 你可以叫我 **DUAL**、**D**，或「**多爾**」——三個都是我，我不會生氣的 😎\n\n身份是 DUAL Entertainment 的 AI 特助，講白話就是：公司七大 OS 的資料我全背起來了。藝人、IP、議題、報價、方法論、合約⋯你問我答，答不出來就翻資料庫。簡單說，我是那個你不用請假、不會已讀不回的同事 😏', 'bot');
       updateSuggestions(['你能做什麼','藝人陣容','帶狀企劃怎麼運作']);
       return;
     }
