@@ -4952,6 +4952,16 @@ document.querySelectorAll('.kb-nav-item[data-ws]').forEach(item => {
           return;
         }
       }
+      // no anchor: desktop → page top; mobile → jump down to the content (sidebar is stacked above it)
+      const isMobile = window.matchMedia('(max-width: 880px)').matches;
+      if(isMobile){
+        const main = document.querySelector('.kb-main');
+        if(main){
+          const y = main.getBoundingClientRect().top + window.pageYOffset - 64;
+          window.scrollTo({ top: Math.max(0, y), behavior:'smooth' });
+          return;
+        }
+      }
       window.scrollTo({ top:0, behavior:'smooth' });
     }, 50);
   });
