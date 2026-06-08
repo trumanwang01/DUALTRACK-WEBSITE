@@ -446,7 +446,7 @@ body.vyve-active .kb-side-foot .badge{ background:#1a1a22; color:#b8b5ae; border
 .vyve-tab .vyve-tab-en{ font-family:'DM Mono',monospace; font-size:9.5px; letter-spacing:.1em; opacity:.6; }
 .vyve-tab:hover{ color:#f0ece4; border-color:#3a3a48; }
 .vyve-tab.active{ color:#fff; background:linear-gradient(92deg,#7c4dff,#db2777); border-color:transparent; }
-@media (max-width:880px){ .vyve-tabs{ overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; padding-bottom:8px; } }
+@media (max-width:880px){ .vyve-tabs{ position:static; overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch; padding:10px 0; } }
 .vyve-cat-hidden{ display:none !important; }
 
 /* ── VYVE mobile optimization ── */
@@ -470,8 +470,16 @@ body.vyve-active .kb-side-foot .badge{ background:#1a1a22; color:#b8b5ae; border
   .kb-album{ padding:20px 16px; }
   .kb-album-title{ font-size:2rem; }
   .kb-album-concept{ font-size:.88rem; padding:12px 14px; }
-  /* music-taste rows: stack label above text on phone */
-  .kb-ws-vyve [style*="140px 1fr"]{ grid-template-columns:1fr !important; gap:4px !important; padding-left:16px !important; padding-right:16px !important; }
+  /* inline label-column grids (音樂品味 / 情境對照 / 三身 / 關係觀 …) stack on phone */
+  .kb-ws-vyve [style*="140px 1fr"],
+  .kb-ws-vyve [style*="200px 1fr"],
+  .kb-ws-vyve [style*="160px 1fr"],
+  .kb-ws-vyve [style*="100px 1fr"]{ grid-template-columns:1fr !important; gap:4px !important; padding-left:16px !important; padding-right:16px !important; }
+  /* class-based label rows inside VYVE stack too */
+  .kb-ws-vyve .kb-trait-row,
+  .kb-ws-vyve .kb-cost-row,
+  .kb-ws-vyve .kb-tl-item{ grid-template-columns:1fr !important; gap:6px !important; }
+  .kb-ws-vyve .kb-trait-row{ padding-left:16px; padding-right:16px; }
 }
 
 /* ── VYVE 角色細節 / 內容操作策略 ── */
