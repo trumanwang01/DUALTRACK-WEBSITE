@@ -550,6 +550,8 @@ body.vyve-active .kb-side-foot .badge{ background:#1a1a22; color:#b8b5ae; border
   .vyve-story{ padding:18px 16px; }
   .vyve-story p{ font-size:.9rem; line-height:1.9; }
   .vyve-space{ padding:13px 14px; }
+  /* audio player: iOS/Android need more height to render all controls */
+  .kb-track audio{ height:44px; }
 }
 .kb-ws-vyve.active .kb-tri-card{ background:#121218; border-color:#1e1e28; }
 .kb-ws-vyve.active .kb-tri-name{ color:#f0ece4; }
@@ -2047,6 +2049,9 @@ body.vyve-active .g-punch{ color:#9a98a8; }
 
 /* standalone tweaks */
 .kb-shell{ grid-template-columns:1fr !important; }
+/* mobile: prevent horizontal overflow / force-zoom issue */
+html,body{ overflow-x:hidden; }
+.kb-main{ overflow-x:hidden; max-width:100vw; }
 </style>
 </head>
 <body class="mode-kb truman-active">

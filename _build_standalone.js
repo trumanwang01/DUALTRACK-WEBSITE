@@ -54,6 +54,9 @@ ${fonts}
 ${css}
 /* standalone tweaks */
 .kb-shell{ grid-template-columns:1fr !important; }
+/* mobile: prevent horizontal overflow / force-zoom issue */
+html,body{ overflow-x:hidden; }
+.kb-main{ overflow-x:hidden; max-width:100vw; }
 </style>
 </head>
 <body class="mode-kb ${opts.bodyClass}">

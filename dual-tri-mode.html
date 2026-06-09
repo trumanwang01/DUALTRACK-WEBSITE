@@ -549,6 +549,8 @@ body.vyve-active .kb-side-foot .badge{ background:#1a1a22; color:#b8b5ae; border
   .vyve-story{ padding:18px 16px; }
   .vyve-story p{ font-size:.9rem; line-height:1.9; }
   .vyve-space{ padding:13px 14px; }
+  /* audio player: iOS/Android need more height to render all controls */
+  .kb-track audio{ height:44px; }
 }
 .kb-ws-vyve.active .kb-tri-card{ background:#121218; border-color:#1e1e28; }
 .kb-ws-vyve.active .kb-tri-name{ color:#f0ece4; }
@@ -2235,47 +2237,13 @@ body.vyve-active .g-punch{ color:#9a98a8; }
     </div>
   </div>
 
-  <!-- SIGNAL ALBUM -->
-  <div class="kb-ws-h" id="album-section"><span class="n">·</span><span class="lab">SIGNAL · 出道專輯</span><span class="meta">2026 · 首發</span></div>
-  <div class="kb-album">
-    <div class="kb-album-cover"><img src="./assets/vyve/album-signal-cover.jpg" alt="VYVE WANG SIGNAL album cover"></div>
-    <div>
-      <div class="kb-album-meta-row">
-        <span class="kb-album-label">⏵ ALBUM 01</span>
-        <span class="kb-album-tag">DEBUT</span>
-        <span class="kb-album-tag">2 TRACKS</span>
-      </div>
-      <div class="kb-album-artist">VYVE WANG</div>
-      <h3 class="kb-album-title">SIGNAL</h3>
-      <p class="kb-album-concept"><b>專輯概念 · Album Concept</b>SIGNAL 不只是 VYVE 的出道作品，它是她存在方式的第一次完整聲明。VYVE 的核心哲學是「頻率對了，解釋就是多餘的」——她不對所有人說話，只對調對頻率的人發出訊號。SIGNAL 就是這個哲學的音樂形式：一張關於「訊號如何被發出、如何傳遞、如何在混亂中失真、又如何走向終止」的 EP。專輯名稱本身就是她的自我介紹。</p>
-      <div class="kb-tracks">
-        <div class="kb-track">
-          <div class="kb-track-head">
-            <span class="kb-track-no">01</span>
-            <span class="kb-track-title">higher</span>
-            <span class="kb-track-dur">·</span>
-          </div>
-          <audio controls preload="metadata" src="./assets/vyve/signal-01-higher.mp3"></audio>
-        </div>
-        <div class="kb-track">
-          <div class="kb-track-head">
-            <span class="kb-track-no">02</span>
-            <span class="kb-track-title">the end</span>
-            <span class="kb-track-dur">·</span>
-          </div>
-          <audio controls preload="metadata" src="./assets/vyve/signal-02-the-end.mp3"></audio>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ALBUM 02: 不想解釋 -->
-  <div class="kb-ws-h" data-cat="music"><span class="n">·</span><span class="lab">不想解釋 · 專輯</span><span class="meta">中文 R&B · 2 首</span></div>
+  <!-- ALBUM 01: 不想解釋 -->
+  <div class="kb-ws-h" id="album-section" data-cat="music"><span class="n">·</span><span class="lab">不想解釋 · 專輯</span><span class="meta">中文 R&B · 2 首</span></div>
   <div class="kb-album">
     <div class="kb-album-cover"><img src="./assets/vyve/album-buxiang-cover.png" alt="VYVE WANG 不想解釋 album cover"></div>
     <div>
       <div class="kb-album-meta-row">
-        <span class="kb-album-label">⏵ ALBUM 02</span>
+        <span class="kb-album-label">⏵ ALBUM 01</span>
         <span class="kb-album-tag">R&amp;B</span>
         <span class="kb-album-tag">2 TRACKS</span>
       </div>
@@ -2298,6 +2266,40 @@ body.vyve-active .g-punch{ color:#9a98a8; }
             <span class="kb-track-dur">·</span>
           </div>
           <audio controls preload="metadata" src="./assets/vyve/buxiang-baozhuang-jimo.mp3"></audio>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALBUM 02: SIGNAL -->
+  <div class="kb-ws-h" data-cat="music"><span class="n">·</span><span class="lab">SIGNAL · 出道專輯</span><span class="meta">2026 · 首發</span></div>
+  <div class="kb-album">
+    <div class="kb-album-cover"><img src="./assets/vyve/album-signal-cover.jpg" alt="VYVE WANG SIGNAL album cover"></div>
+    <div>
+      <div class="kb-album-meta-row">
+        <span class="kb-album-label">⏵ ALBUM 02</span>
+        <span class="kb-album-tag">DEBUT</span>
+        <span class="kb-album-tag">2 TRACKS</span>
+      </div>
+      <div class="kb-album-artist">VYVE WANG</div>
+      <h3 class="kb-album-title">SIGNAL</h3>
+      <p class="kb-album-concept"><b>專輯概念 · Album Concept</b>SIGNAL 不只是 VYVE 的出道作品，它是她存在方式的第一次完整聲明。VYVE 的核心哲學是「頻率對了，解釋就是多餘的」——她不對所有人說話，只對調對頻率的人發出訊號。SIGNAL 就是這個哲學的音樂形式：一張關於「訊號如何被發出、如何傳遞、如何在混亂中失真、又如何走向終止」的 EP。專輯名稱本身就是她的自我介紹。</p>
+      <div class="kb-tracks">
+        <div class="kb-track">
+          <div class="kb-track-head">
+            <span class="kb-track-no">01</span>
+            <span class="kb-track-title">higher</span>
+            <span class="kb-track-dur">·</span>
+          </div>
+          <audio controls preload="metadata" src="./assets/vyve/signal-01-higher.mp3"></audio>
+        </div>
+        <div class="kb-track">
+          <div class="kb-track-head">
+            <span class="kb-track-no">02</span>
+            <span class="kb-track-title">the end</span>
+            <span class="kb-track-dur">·</span>
+          </div>
+          <audio controls preload="metadata" src="./assets/vyve/signal-02-the-end.mp3"></audio>
         </div>
       </div>
     </div>
