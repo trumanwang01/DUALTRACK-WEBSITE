@@ -16,10 +16,12 @@
 ## 絕對規則：vyve.html 與 truman.html 是建置產物
 這兩頁是給投資人看的獨立版，內容從 `dual-tri-mode.html` 的對應 panel 抽出。
 
-- 要改 VYVE / TRUMAN 的任何內容 → **改 `dual-tri-mode.html`**，再跑 `node _build_standalone.js`
+- 要改 VYVE / TRUMAN 的任何內容 → **改 `dual-tri-mode.html`**，不要碰產物
 - 直接編輯 `vyve.html` / `truman.html`，下次 build 會整份覆蓋掉
-- build script 用字串標記定位（`<div class="kb-panel kb-ws-vyve"`、`// === LIGHTBOX ===`、`// === VYVE: category tabs` 等）。改動或刪除這些標記會讓 build **靜默產出空內容**
-- 因此 build 後必須看 console 輸出：`vyvePanel` / `trumanPanel` / 各 js chunk 長度都不得為 0，檔案大小也要合理（vyve 約 270KB、truman 約 210KB）
+- **`.git/hooks/pre-commit` 會在每次 commit 前自動跑 `node _build_standalone.js` 並 stage 兩個產物**，所以不需要手動 build；只有要單獨驗證時才手動跑
+- 但這個 hook 位於 `.git/hooks/` 下、**不受版控**。重新 clone 後不會存在，必須手動重建，否則產物會悄悄過期
+- hook 只檢查 exit code，不檢查內容。build script 用字串標記定位（`<div class="kb-panel kb-ws-vyve"`、`// === LIGHTBOX ===`、`// === VYVE: category tabs` 等），改動或刪除這些標記會讓 build **靜默產出空內容，而 hook 會照樣把空檔案 commit 進去**
+- 因此改完 `dual-tri-mode.html` 後，必須看 build 輸出確認：`vyvePanel` / `trumanPanel` / 各 js chunk 長度都不為 0，檔案大小合理（基準值：vyve 267KB、truman 211KB）
 
 ## 三頁互相導流
 `index` ↔ `dual-os-v3` ↔ `dual-tri-mode` 必須兩兩可互連。動到任何導覽或按鈕後，三頁都要確認還連得到。
